@@ -42,7 +42,7 @@ public class Spawner : MonoBehaviour
                 {
                     Debug.Log(_random);
                     if (a==0)
-                   {       
+                    {       
                         BackpackManager.Instance.fondoItems.SetActive(false);
                         BackpackManager.Instance.slotsItems.SetActive(false);
                         BackpackManager.Instance.slotsGh.SetActive(false); 
