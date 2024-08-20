@@ -38,7 +38,7 @@ public class BattleSystem : MonoBehaviour
 
 	public GameObject attackImage;
 	public GameObject _attackImage;
-	private Spawner _spawner;
+	public GameObject[] _spawner;
 
 	private Ghostlymanager GhManager;
 	private int ant;
@@ -62,7 +62,7 @@ public class BattleSystem : MonoBehaviour
 			_captura[curr._chance] = curr.weight;
 		}
 		state = BattleState.START;
-		_spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
+		_spawner = GameObject.FindGameObjectsWithTag("Spawner");
 		movement = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement_Main>();
 	}
 
@@ -189,6 +189,12 @@ public class BattleSystem : MonoBehaviour
             imageBattale.SetActive(false);
             hudAttack.SetActive(false);
             hudBase.SetActive(true);
+			foreach(GameObject _spawner in _spawner)
+			{
+				_spawner.GetComponent<Spawner>().a = 0;
+				_spawner.GetComponent<Spawner>().tiempoCombat = 0;
+			}
+            
             movement.velocidadMovimiento = movement.velmovsave;
             StatsManager.Instance._unitXp += Random.Range(200,500);
 			GameManager.Instance.obv2 = true;
@@ -209,8 +215,7 @@ public class BattleSystem : MonoBehaviour
 			StatsManager.Instance.stamina = 100;
 			Destroy(enemyGO);
 			Destroy(playerGO,0.1f);
-			_spawner.a = 0;
-			_spawner.tiempoCombat = 0;
+
 		} else if (state == BattleState.LOST)
 		{
 			
@@ -220,8 +225,12 @@ public class BattleSystem : MonoBehaviour
 			GameManager.Instance.CharacterPassAway();
             Destroy(enemyGO);
 			Destroy(playerGO);
-			_spawner.a = 0;
-		}
+            foreach (GameObject _spawner in _spawner)
+            {
+                _spawner.GetComponent<Spawner>().a = 0;
+                _spawner.GetComponent<Spawner>().tiempoCombat = 0;
+            }
+        }
 	}
 
 	void PlayerTurn()
@@ -253,15 +262,19 @@ public class BattleSystem : MonoBehaviour
 
 	public IEnumerator PlayerEscape()
 	{
-		movement.velocidadMovimiento = movement.velmovsave;
+        foreach (GameObject _spawner in _spawner)
+        {
+            _spawner.GetComponent<Spawner>().a = 0;
+            _spawner.GetComponent<Spawner>().tiempoCombat = 0;
+        }
+        movement.velocidadMovimiento = movement.velmovsave;
 		dialogueText.text = "¡Te has escapado!";
 		AudioManager.instance.PlaySound(6);
 		yield return new WaitForSeconds(1f);
 		imageBattale.SetActive(false);
 		Destroy(enemyGO);
 		Destroy(playerGO);
-		_spawner.a = 0;
-		_spawner.tiempoCombat = 0;
+
 	}
 
 	public IEnumerator InvEscape()
@@ -311,7 +324,12 @@ public class BattleSystem : MonoBehaviour
 		int chance = GetRandomChance();
 		if (chance == 0)
 		{
-			movement.velocidadMovimiento = movement.velmovsave;
+            foreach (GameObject _spawner in _spawner)
+            {
+                _spawner.GetComponent<Spawner>().a = 0;
+                _spawner.GetComponent<Spawner>().tiempoCombat = 0;
+            }
+            movement.velocidadMovimiento = movement.velmovsave;
 			dialogueText.text = "¡Captura en 3...2...1!";
 			yield return new WaitForSeconds(2f);
 			AudioManager.instance.PlaySound(4);
@@ -333,8 +351,7 @@ public class BattleSystem : MonoBehaviour
 			imageBattale.SetActive(false);
 			hudInv.SetActive(false);
 			hudBase.SetActive(true);
-			_spawner.a = 0;
-			_spawner.tiempoCombat = 0;
+
 		}
 		else
 		{
