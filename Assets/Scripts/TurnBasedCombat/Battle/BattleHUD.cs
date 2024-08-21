@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.UI.CanvasScaler;
 
 public class BattleHUD : MonoBehaviour
 {
@@ -22,8 +23,10 @@ public class BattleHUD : MonoBehaviour
 
 	private void Update()
 	{
+		
 		_unit = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Unit>();
-		hpSlider.fillAmount = _unit.currentHP / _unit.randomMaxHP;
+        nameText.text = _unit.unitName[_unit.nameIndex];
+        hpSlider.fillAmount = _unit.currentHP / _unit.randomMaxHP;
 		HP.text = "HP: " + (int)_unit.currentHP;
 	}
 

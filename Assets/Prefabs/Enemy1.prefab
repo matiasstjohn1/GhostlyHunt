@@ -100,23 +100,8 @@ MonoBehaviour:
   - Kronk
   - Chork
   currentHP: 0
-  nameInfo:
-  - names: 0
-    weight: 1
-  - names: 1
-    weight: 1
-  - names: 2
-    weight: 1
-  - names: 3
-    weight: 1
-  - names: 4
-    weight: 0
-  - names: 5
-    weight: 0
-  - names: 6
-    weight: 0
-  - names: 7
-    weight: 0
+  _spawner:
+  - {fileID: 0}
   nameIndex: 0
   randomLvl: 0
   randomDamage: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -15,6 +16,11 @@ public class Spawner : MonoBehaviour
     BattleSystem battle;
     [SerializeField] GameObject imageBattale;
 
+    //Random//
+    Dictionary<AttackEnum, int> _names;
+    public List<AttackInfo> nameInfo;
+    public int nameIndex;
+
     void Start()
     {
         battle = GameObject.FindGameObjectWithTag("Battle").GetComponent<BattleSystem>();
@@ -22,6 +28,13 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
+        _names = new Dictionary<AttackEnum, int>();
+        for (int i = 0; i < nameInfo.Count; i++)
+        {
+            var curr = nameInfo[i];
+            _names[curr.names] = curr.weight;
+        }
+
         currentTime += Time.deltaTime;
         if(currentTime >=2)
         {
@@ -55,6 +68,11 @@ public class Spawner : MonoBehaviour
             }
 
         }
+    }
+    public int GetRandomName()
+    {
+        var rarity = MyRandoms.Roulette(_names); //Uso del My Random.
+        return (int)rarity;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
