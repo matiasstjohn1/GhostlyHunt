@@ -15,32 +15,55 @@ public class Unit : MonoBehaviour
 
     public float currentHP;
 
-	//Random//
-	Dictionary<AttackEnum, int> _names;
-	public List<AttackInfo> nameInfo;
-	public int nameIndex;
-
-	//Random Enemy Stats//
-	public int randomLvl;
+    public GameObject[] _spawner;
+	public GameObject player;
+    public int nameIndex;
+    //Random Enemy Stats//
+    public int randomLvl;
 	public int randomDamage;
 	public float randomMaxHP;
 
 	private void Awake()
 	{
-		_names = new Dictionary<AttackEnum, int>();
-		for (int i = 0; i < nameInfo.Count; i++)
-		{
-			var curr = nameInfo[i];
-			_names[curr.names] = curr.weight;
-		}
-		nameIndex=GetRandomName();
-		randomLvl= Random.Range(10, 101);
+        // Encuentra todos los spawners y el jugador
+        GameObject[] spawners = GameObject.FindGameObjectsWithTag("Spawner");
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        GameObject closest = null;
+        float closestDistance = Mathf.Infinity;
+
+        // Itera sobre todos los spawners para encontrar el más cercano
+        foreach (GameObject spawner in spawners)
+        {
+            Vector3 spawnerPosition = spawner.transform.position;
+            Vector3 playerPosition = player.transform.position;
+            Vector3 diff = spawnerPosition - playerPosition;
+            float distance = diff.sqrMagnitude;
+
+            // Compara la distancia para encontrar el spawner más cercano
+            if (distance < closestDistance)
+            {
+                closest = spawner;
+                closestDistance = distance;
+            }
+        }
+
+        // Si se ha encontrado un spawner más cercano, actualiza su nombreIndex
+        if (closest != null)
+        {
+            Spawner spawnerComponent = closest.GetComponent<Spawner>();
+            spawnerComponent.nameIndex = spawnerComponent.GetRandomName();
+            nameIndex = spawnerComponent.nameIndex;
+        }
+
+        randomLvl = Random.Range(10, 101);
 		randomDamage = Random.Range(10, 51);
 		randomMaxHP = Random.Range(100, 1001);
 		currentHP = randomMaxHP;
 	}
 
-	private void Start()
+
+    private void Start()
 	{
 		image = GetComponent<Image>();
 	}
@@ -74,9 +97,5 @@ public class Unit : MonoBehaviour
 		}
 	}
 
-	public int GetRandomName()
-	{
-		var rarity = MyRandoms.Roulette(_names); //Uso del My Random.
-		return (int)rarity;
-	}
+
 }
