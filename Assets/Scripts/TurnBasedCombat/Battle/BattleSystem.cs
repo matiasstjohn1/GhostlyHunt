@@ -48,7 +48,11 @@ public class BattleSystem : MonoBehaviour
 	Dictionary<Capturaenum, int> _captura;
 	public List<CapturaInfo> nameInfo;
 
-	public List<StatsSave2> Statsinfo = new List<StatsSave2>(); 
+    //Ataque enemigo
+    Dictionary<AtackEnum, int> _Ataque;
+    public List<TipeAttack> ataqueInfo;
+
+    public List<StatsSave2> Statsinfo = new List<StatsSave2>(); 
 	public int i = 0; //Captura randoms
 	public int a = 0; //Botones de uso combate (especial, basico, escape y captura).
 	public int b = 0; //Botones de abrir (inv y ataques).
@@ -60,11 +64,19 @@ public class BattleSystem : MonoBehaviour
 		{
 			var curr = nameInfo[i];
 			_captura[curr._chance] = curr.weight;
-		}
+		} 
+		_Ataque = new Dictionary<AtackEnum, int>();
+        for (int i = 0; i < ataqueInfo.Count; i++)
+        {
+            var curre = ataqueInfo[i];
+            _Ataque[curre._Chance] = curre.weight;
+        }
 		state = BattleState.START;
 		_spawner = GameObject.FindGameObjectsWithTag("Spawner");
 		movement = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement_Main>();
-	}
+
+
+    }
 
 	private void Update()
     {
@@ -152,21 +164,44 @@ public class BattleSystem : MonoBehaviour
 		}
 	}
 
-	public IEnumerator EnemyTurn()
+    public int GetTypeChance()
+    {
+        var type = MyRandoms.Roulette(_Ataque); //Uso del My Random.
+        return (int)type;
+    }
+    public IEnumerator EnemyTurn()
 	{
-		
+        int chance = GetRandomChance();
 		dialogueText.text = enemyUnit.unitName[enemyUnit.nameIndex] + " ataco!";
+		bool isDead=false;
 
-		yield return new WaitForSeconds(1f);
-		_attackImage.SetActive(true);
-		bool isDead = playerUnit.TakeDamage(enemyUnit.randomDamage); 
-		AudioManager.instance.PlaySound(2);
+        yield return new WaitForSeconds(1f);
+		if (chance == 0)
+		{
+			_attackImage.SetActive(true);
+			Debug.Log("ataque sp");
 
-		playerHUD.SetHP(playerUnit.currentHP);
+			isDead = playerUnit.TakeDamage((int)enemyUnit.randomDamage + (int)(enemyUnit.randomDamage * 0.3f));
+			AudioManager.instance.PlaySound(2);
 
-		yield return new WaitForSeconds(1f);
-		_attackImage.SetActive(false);
-		if(isDead)
+			playerHUD.SetHP(playerUnit.currentHP);
+
+			yield return new WaitForSeconds(1f);
+			_attackImage.SetActive(false);
+		}
+        if (chance == 1)
+        {
+            _attackImage.SetActive(true);
+            Debug.Log("ataque norm");
+            isDead = playerUnit.TakeDamage((int)enemyUnit.randomDamage);
+            AudioManager.instance.PlaySound(2);
+
+            playerHUD.SetHP(playerUnit.currentHP);
+
+            yield return new WaitForSeconds(1f);
+            _attackImage.SetActive(false);
+        }
+        if (isDead)
 		{
 			state = BattleState.LOST;
             StartCoroutine(EndBattle());
