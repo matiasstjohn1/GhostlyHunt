@@ -11,12 +11,14 @@ public class BattleSystem : MonoBehaviour
 
 	public GameObject playerPrefab;
 	public GameObject enemyPrefab;
+	public GameObject enemyBossPrefab;
 
 	public Transform playerBattleStation;
 	public Transform enemyBattleStation;
 
 	UnitP playerUnit;
 	Unit enemyUnit;
+	UnitBoss enemyBossUnit;
 
 	public Text dialogueText;
 
@@ -36,8 +38,9 @@ public class BattleSystem : MonoBehaviour
 	private GameObject enemyGO;
 	private GameObject playerGO;
 
-	public GameObject attackImage;
-	public GameObject _attackImage;
+	public GameObject attackImage; //efecto ataque player.
+	public GameObject _attackImage;//efecto ataque normal enemigo.
+	public GameObject _attackImage2; //efecto ataque especial enemigo.
 	public GameObject[] _spawner;
 
 	private Ghostlymanager GhManager;
@@ -48,15 +51,18 @@ public class BattleSystem : MonoBehaviour
 	Dictionary<Capturaenum, int> _captura;
 	public List<CapturaInfo> nameInfo;
 
-    //Ataque enemigo
-    Dictionary<AtackEnum, int> _Ataque;
-    public List<TipeAttack> ataqueInfo;
+	//Ataque enemigo
+	Dictionary<AtackEnum, int> _Ataque;
+	public List<TipeAttack> ataqueInfo;
 
-    public List<StatsSave2> Statsinfo = new List<StatsSave2>(); 
+	public List<StatsSave2> Statsinfo = new List<StatsSave2>();
 	public int i = 0; //Captura randoms
 	public int a = 0; //Botones de uso combate (especial, basico, escape y captura).
 	public int b = 0; //Botones de abrir (inv y ataques).
 	public int c = 0; //Botones de soporte (inv y ghostly cambio).
+
+	public GameObject bosszoneprefab;
+
 	void Start()
 	{
 		_captura = new Dictionary<Capturaenum, int>();
@@ -64,35 +70,39 @@ public class BattleSystem : MonoBehaviour
 		{
 			var curr = nameInfo[i];
 			_captura[curr._chance] = curr.weight;
-		} 
-
+		}
+		
 		state = BattleState.START;
 		_spawner = GameObject.FindGameObjectsWithTag("Spawner");
 		movement = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement_Main>();
 
-
-    }
+	}
 
 	private void Update()
-    {
+	{
 		if (enemyUnit != null)
 		{
 			enemyUnit.ChangeSprite(enemyUnit.nameIndex);
 		}
-        _Ataque = new Dictionary<AtackEnum, int>();
-        for (int i = 0; i < ataqueInfo.Count; i++)
-        {
-            var curre = ataqueInfo[i];
-            _Ataque[curre._Chance] = curre.weight;
-        }
-    }
 
-    public void SetUpC()
-    {
-        StartCoroutine(SetupBattle());
-    }
+		_Ataque = new Dictionary<AtackEnum, int>();
+		for (int i = 0; i < ataqueInfo.Count; i++)
+		{
+			var curre = ataqueInfo[i];
+			_Ataque[curre._Chance] = curre.weight;
+		}
+	}
 
-    public IEnumerator SetupBattle()
+	public void SetUpC()
+	{
+		StartCoroutine(SetupBattle());
+	}
+	public void SetUpB()
+	{
+		StartCoroutine(SetupBossBattle());
+	}
+
+	public IEnumerator SetupBattle()
 	{
 		movement.SaveStat();
 		movement.velocidadMovimiento = 0;
@@ -112,101 +122,215 @@ public class BattleSystem : MonoBehaviour
 		state = BattleState.PLAYERTURN;
 		PlayerTurn();
 	}
+	//COMABATE CONTRA BOSS//
+	public IEnumerator SetupBossBattle()
+	{
+		movement.SaveStat();
+		movement.velocidadMovimiento = 0;
+		playerGO = Instantiate(playerPrefab, playerBattleStation);
+		playerUnit = playerGO.GetComponent<UnitP>();
+
+		enemyGO = Instantiate(enemyBossPrefab, enemyBattleStation);
+		enemyBossUnit = enemyGO.GetComponent<UnitBoss>();
+
+		dialogueText.text = "Un " + enemyBossUnit.unitName + " ha aparecido";
+
+		playerHUD.SetHUDP(playerUnit);
+		enemyHUD.SetBossHUD(enemyBossUnit);
+
+		yield return new WaitForSeconds(2f);
+
+		state = BattleState.PLAYERTURN;
+		PlayerTurn();
+	}
 
 	public IEnumerator PlayerAttack()
 	{
-		bool isDead = enemyUnit.TakeDamage(StatsManager.Instance._damage);
+		bool isDead = false;
+		if (enemyUnit!=null)
+		{
+			isDead = enemyUnit.TakeDamage(StatsManager.Instance._damage);
+			enemyHUD.SetHP(enemyUnit.currentHP); //Vida enemy.
+			attackImage.SetActive(true);
+			AudioManager.instance.PlayCombatSounds(1);
+			dialogueText.text = "Ataque exitoso!";
 
-		enemyHUD.SetHP(enemyUnit.currentHP); //Vida enemy.
-		attackImage.SetActive(true);
-		AudioManager.instance.PlaySound(1);
-		dialogueText.text = "Ataque exitoso!";
-		
-		StatsManager.Instance.stamina -=10;
+			StatsManager.Instance.stamina -= 10;
+		}
+		if (enemyBossUnit != null)
+		{
+			isDead = enemyBossUnit.TakeDamage(StatsManager.Instance._damage);
+			enemyHUD.SetHP(enemyBossUnit.currentHP); //Vida enemy.
+			attackImage.SetActive(true);
+			AudioManager.instance.PlayCombatSounds(1);
+			dialogueText.text = "Ataque exitoso!";
+
+			StatsManager.Instance.stamina -= 10;
+		}
 
 		yield return new WaitForSeconds(0.5f);
 		attackImage.SetActive(false);
-		if(isDead)
+		if (isDead)
 		{
 			state = BattleState.WON;
-            StartCoroutine(EndBattle());
+			StartCoroutine(EndBattle());
 			yield return new WaitForSeconds(2f);
 			imageBattale.SetActive(false);
-		} else
+			if(enemyBossUnit!=null)
+			{ 
+				Destroy(bosszoneprefab);
+			}
+		}
+		else
 		{
-			state = BattleState.ENEMYTURN;
-			StartCoroutine(EnemyTurn());
+			if (enemyUnit != null)
+			{
+				state = BattleState.ENEMYTURN;
+				StartCoroutine(EnemyTurn());
+			}
+			if (enemyBossUnit != null)
+			{
+				state = BattleState.ENEMYTURN;
+				StartCoroutine(EnemyBossTurn());
+			}
 		}
 	}
 	public IEnumerator PlayerSPAttack()
 	{
-		bool isDead = enemyUnit.TakeDamage(StatsManager.Instance._damage+ (StatsManager.Instance._damage*10/100));
+		bool isDead = false;
 
-		enemyHUD.SetHP(enemyUnit.currentHP); //Vida enemy.
-		attackImage.SetActive(true); //Futuro cambiar imagen de ataque a especial
-		AudioManager.instance.PlaySound(1); //Futuro cambiar sonido de ataque especial.
-		dialogueText.text = "Ataque especial exitoso!";
+		if (enemyUnit != null)
+		{
+		   isDead = enemyUnit.TakeDamage(StatsManager.Instance._damage + (StatsManager.Instance._damage * 10 / 100));
+			enemyHUD.SetHP(enemyUnit.currentHP); //Vida enemy.
+			attackImage.SetActive(true); //Futuro cambiar imagen de ataque a especial
+			AudioManager.instance.PlayCombatSounds(1); //Futuro cambiar sonido de ataque especial.
+			dialogueText.text = "Ataque especial exitoso!";
+			StatsManager.Instance.stamina -= 80;
+		}
 
-		StatsManager.Instance.stamina -= 80;
+		if (enemyBossUnit != null)
+		{
+			isDead = enemyBossUnit.TakeDamage(StatsManager.Instance._damage + (StatsManager.Instance._damage * 10 / 100));
+			enemyHUD.SetHP(enemyBossUnit.currentHP); //Vida enemy.
+			attackImage.SetActive(true); //Futuro cambiar imagen de ataque a especial
+			AudioManager.instance.PlayCombatSounds(1); //Futuro cambiar sonido de ataque especial.
+			dialogueText.text = "Ataque especial exitoso!";
+			StatsManager.Instance.stamina -= 80;
+		}
 
 		yield return new WaitForSeconds(0.5f);
 		attackImage.SetActive(false); //Cambiar imagen
 		if (isDead)
 		{
 			state = BattleState.WON;
-            StartCoroutine(EndBattle());
-            yield return new WaitForSeconds(2f);
+			StartCoroutine(EndBattle());
+			yield return new WaitForSeconds(2f);
 			imageBattale.SetActive(false);
 		}
 		else
 		{
-			state = BattleState.ENEMYTURN;
-			StartCoroutine(EnemyTurn());
+			if(enemyUnit != null)
+			{
+				state = BattleState.ENEMYTURN;
+				StartCoroutine(EnemyTurn());
+			}
+			if (enemyBossUnit != null)
+			{
+				state = BattleState.ENEMYTURN;
+				StartCoroutine(EnemyBossTurn());
+			}
 		}
 	}
 
-    public int GetTypeChance()
-    {
-        var type = MyRandoms.Roulette(_Ataque); //Uso del My Random.
-        return (int)type;
-    }
-    public IEnumerator EnemyTurn()
+	public int GetTypeChance()
 	{
-        int chance = GetRandomChance();
+		var type = MyRandoms.Roulette(_Ataque); //Uso del My Random.
+		return (int)type;
+	}
+	public IEnumerator EnemyTurn()
+	{
+		int chance = GetRandomChance();
 		dialogueText.text = enemyUnit.unitName[enemyUnit.nameIndex] + " ataco!";
-		bool isDead=false;
+		bool isDead = false;
 
-        yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(1f);
 		if (chance == 0)
 		{
-			_attackImage.SetActive(true);
+			_attackImage2.SetActive(true);
 			Debug.Log("ataque sp");
 
 			isDead = playerUnit.TakeDamage((int)enemyUnit.randomDamage + (int)(enemyUnit.randomDamage * 0.3f));
-			AudioManager.instance.PlaySound(2);
+			AudioManager.instance.PlayCombatSounds(2);
+
+			playerHUD.SetHP(playerUnit.currentHP);
+
+			yield return new WaitForSeconds(1f);
+			_attackImage2.SetActive(false);
+		}
+		if (chance == 1)
+		{
+			_attackImage.SetActive(true);
+			Debug.Log("ataque norm");
+			isDead = playerUnit.TakeDamage((int)enemyUnit.randomDamage);
+			AudioManager.instance.PlayCombatSounds(2);
 
 			playerHUD.SetHP(playerUnit.currentHP);
 
 			yield return new WaitForSeconds(1f);
 			_attackImage.SetActive(false);
 		}
-        if (chance == 1)
-        {
-            _attackImage.SetActive(true);
-            Debug.Log("ataque norm");
-            isDead = playerUnit.TakeDamage((int)enemyUnit.randomDamage);
-            AudioManager.instance.PlaySound(2);
-
-            playerHUD.SetHP(playerUnit.currentHP);
-
-            yield return new WaitForSeconds(1f);
-            _attackImage.SetActive(false);
-        }
-        if (isDead)
+		if (isDead)
 		{
 			state = BattleState.LOST;
-            StartCoroutine(EndBattle());
-        } else
+			StartCoroutine(EndBattle());
+		}
+		else
+		{
+			state = BattleState.PLAYERTURN;
+			StatsManager.Instance.stamina += 20;
+			PlayerTurn();
+		}
+	}
+	//Turno del Boss//
+	public IEnumerator EnemyBossTurn()
+	{
+		int chance = GetRandomChance();
+		dialogueText.text = enemyBossUnit.unitName + " ataco!";
+		bool isDead = false;
+
+		yield return new WaitForSeconds(1f);
+		if (chance == 0)
+		{
+			_attackImage2.SetActive(true);
+			Debug.Log("ataque sp");
+
+			isDead = playerUnit.TakeDamage((int)enemyBossUnit.Damage + (int)(enemyBossUnit.Damage * 0.3f));
+			AudioManager.instance.PlayCombatSounds(2);
+
+			playerHUD.SetHP(playerUnit.currentHP);
+
+			yield return new WaitForSeconds(1f);
+			_attackImage2.SetActive(false);
+		}
+		if (chance == 1)
+		{
+			_attackImage.SetActive(true);
+			Debug.Log("ataque norm");
+			isDead = playerUnit.TakeDamage((int)enemyBossUnit.Damage);
+			AudioManager.instance.PlayCombatSounds(2);
+
+			playerHUD.SetHP(playerUnit.currentHP);
+
+			yield return new WaitForSeconds(1f);
+			_attackImage.SetActive(false);
+		}
+		if (isDead)
+		{
+			state = BattleState.LOST;
+			StartCoroutine(EndBattle());
+		}
+		else
 		{
 			state = BattleState.PLAYERTURN;
 			StatsManager.Instance.stamina += 20;
@@ -214,25 +338,24 @@ public class BattleSystem : MonoBehaviour
 		}
 	}
 
-    public IEnumerator EndBattle()
+	public IEnumerator EndBattle()
 	{
-		if(state == BattleState.WON)
+		if (state == BattleState.WON)
 		{
-
-			AudioManager.instance.PlaySound(4);
+			AudioManager.instance.PlayCombatSounds(4);
 			dialogueText.text = "¡Ganaste la batalla!";
-            yield return new WaitForSeconds(1f);
-            imageBattale.SetActive(false);
-            hudAttack.SetActive(false);
-            hudBase.SetActive(true);
-			foreach(GameObject _spawner in _spawner)
+			yield return new WaitForSeconds(1f);
+			imageBattale.SetActive(false);
+			hudAttack.SetActive(false);
+			hudBase.SetActive(true);
+			foreach (GameObject _spawner in _spawner)
 			{
 				_spawner.GetComponent<Spawner>().a = 0;
 				_spawner.GetComponent<Spawner>().tiempoCombat = 0;
 			}
-            
-            movement.velocidadMovimiento = movement.velmovsave;
-            StatsManager.Instance._unitXp += Random.Range(200,500);
+
+			movement.velocidadMovimiento = movement.velmovsave;
+			StatsManager.Instance._unitXp += Random.Range(200, 500);
 			GameManager.Instance.obv2 = true;
 			StatsManager.Instance.Actualizar();
 
@@ -250,23 +373,25 @@ public class BattleSystem : MonoBehaviour
 			}
 			StatsManager.Instance.stamina = 100;
 			Destroy(enemyGO);
-			Destroy(playerGO,0.1f);
+			Destroy(playerGO, 0.1f);
 
-		} else if (state == BattleState.LOST)
+		}
+		else if (state == BattleState.LOST)
 		{
-			
-			AudioManager.instance.PlaySound(3);
+
+			AudioManager.instance.PlayCombatSounds(3);
 			dialogueText.text = "¡Has perdido!.";
 			yield return new WaitForSeconds(2f);
+			AudioManager.instance.StopSounds();
 			GameManager.Instance.CharacterPassAway();
-            Destroy(enemyGO);
+			Destroy(enemyGO);
 			Destroy(playerGO);
-            foreach (GameObject _spawner in _spawner)
-            {
-                _spawner.GetComponent<Spawner>().a = 0;
-                _spawner.GetComponent<Spawner>().tiempoCombat = 0;
-            }
-        }
+			foreach (GameObject _spawner in _spawner)
+			{
+				_spawner.GetComponent<Spawner>().a = 0;
+				_spawner.GetComponent<Spawner>().tiempoCombat = 0;
+			}
+		}
 	}
 
 	void PlayerTurn()
@@ -286,11 +411,9 @@ public class BattleSystem : MonoBehaviour
 	public IEnumerator PlayerHeal(int amount)
 	{
 		playerUnit.Heal(amount);
-		AudioManager.instance.PlaySound(7);
+		AudioManager.instance.PlayCombatSounds(7);
 		playerHUD.SetHP(playerUnit.currentHP);
 		dialogueText.text = "¡Te has curado!";
-		//GameManager.Instance.invActivo = !GameManager.Instance.invActivo;
-		//GameManager.Instance.inv.SetActive(GameManager.Instance.invActivo);
 		GameObject.FindGameObjectWithTag("InventarioM").GetComponent<InventroyManager>().showInventory();
 		dialogueText.text = "¡Elige tu siguiente accion!";
 		yield return new WaitForSeconds(1f);
@@ -298,14 +421,14 @@ public class BattleSystem : MonoBehaviour
 
 	public IEnumerator PlayerEscape()
 	{
-        foreach (GameObject _spawner in _spawner)
-        {
-            _spawner.GetComponent<Spawner>().a = 0;
-            _spawner.GetComponent<Spawner>().tiempoCombat = 0;
-        }
-        movement.velocidadMovimiento = movement.velmovsave;
+		foreach (GameObject _spawner in _spawner)
+		{
+			_spawner.GetComponent<Spawner>().a = 0;
+			_spawner.GetComponent<Spawner>().tiempoCombat = 0;
+		}
+		movement.velocidadMovimiento = movement.velmovsave;
 		dialogueText.text = "¡Te has escapado!";
-		AudioManager.instance.PlaySound(6);
+		AudioManager.instance.PlayCombatSounds(6);
 		yield return new WaitForSeconds(1f);
 		imageBattale.SetActive(false);
 		Destroy(enemyGO);
@@ -316,7 +439,6 @@ public class BattleSystem : MonoBehaviour
 	public IEnumerator InvEscape()
 	{
 		dialogueText.text = "¡Has abierto el inventario!";
-		//AudioManager.instance.PlaySound(6);
 		yield return new WaitForSeconds(1f);
 		hudBase.SetActive(false);
 		hudInv.SetActive(true);
@@ -324,7 +446,6 @@ public class BattleSystem : MonoBehaviour
 	public IEnumerator AttackSelect()
 	{
 		dialogueText.text = "¡Elije tu ataque!";
-		//AudioManager.instance.PlaySound(6);
 		yield return new WaitForSeconds(1f);
 		hudBase.SetActive(false);
 		hudAttack.SetActive(true);
@@ -333,7 +454,6 @@ public class BattleSystem : MonoBehaviour
 	public IEnumerator CharcSelect()
 	{
 		dialogueText.text = "¡Selecciona tu ghostly!";
-		//AudioManager.instance.PlaySound(6);
 		yield return new WaitForSeconds(1f);
 		hudInv.SetActive(false);
 		hudChar.SetActive(true);
@@ -341,7 +461,6 @@ public class BattleSystem : MonoBehaviour
 
 	public IEnumerator Back()
 	{
-		//AudioManager.instance.PlaySound(6);
 		yield return new WaitForSeconds(1f);
 		hudInv.SetActive(false);
 		hudChar.SetActive(false);
@@ -360,26 +479,26 @@ public class BattleSystem : MonoBehaviour
 		int chance = GetRandomChance();
 		if (chance == 0)
 		{
-            foreach (GameObject _spawner in _spawner)
-            {
-                _spawner.GetComponent<Spawner>().a = 0;
-                _spawner.GetComponent<Spawner>().tiempoCombat = 0;
-            }
-            movement.velocidadMovimiento = movement.velmovsave;
+			foreach (GameObject _spawner in _spawner)
+			{
+				_spawner.GetComponent<Spawner>().a = 0;
+				_spawner.GetComponent<Spawner>().tiempoCombat = 0;
+			}
+			movement.velocidadMovimiento = movement.velmovsave;
 			dialogueText.text = "¡Captura en 3...2...1!";
 			yield return new WaitForSeconds(2f);
-			AudioManager.instance.PlaySound(4);
+			AudioManager.instance.PlayCombatSounds(4);
 			dialogueText.text = "¡Captura exitosa!";
 			GameManager.Instance.obv3 = true;
 			GhController.Instance.colocarInv();
-            if (i <= Statsinfo.Count)
-            {
-                Statsinfo[i]._damage = enemyUnit.randomDamage;
-                Statsinfo[i]._lvl = enemyUnit.randomLvl;
-                Statsinfo[i]._HPmax = enemyUnit.randomMaxHP;
-                Statsinfo[i]._nameIndex = enemyUnit.nameIndex;
-                i++;
-            }
+			if (i <= Statsinfo.Count)
+			{
+				Statsinfo[i]._damage = enemyUnit.randomDamage;
+				Statsinfo[i]._lvl = enemyUnit.randomLvl;
+				Statsinfo[i]._HPmax = enemyUnit.randomMaxHP;
+				Statsinfo[i]._nameIndex = enemyUnit.nameIndex;
+				i++;
+			}
 			GameObject.FindGameObjectWithTag("InventarioM").GetComponent<InventoryGh>().showInventory();
 			yield return new WaitForSeconds(2f);
 			Destroy(enemyGO);
@@ -405,10 +524,10 @@ public class BattleSystem : MonoBehaviour
 	{
 		if (a == 0)
 		{
-			if(StatsManager.Instance.stamina >=0)
+			if (StatsManager.Instance.stamina >= 0)
 			{
 				if (state != BattleState.PLAYERTURN)
-				return;
+					return;
 				BackpackManager.Instance.fondoItems.SetActive(false);
 				BackpackManager.Instance.slotsItems.SetActive(false);
 				BackpackManager.Instance.slotsGh.SetActive(false);
@@ -416,7 +535,7 @@ public class BattleSystem : MonoBehaviour
 				a = 1;
 			}
 			else
-			dialogueText.text = "¡Stamina insuficiente!";
+				dialogueText.text = "¡Stamina insuficiente!";
 		}
 	}
 
@@ -427,7 +546,7 @@ public class BattleSystem : MonoBehaviour
 			if (StatsManager.Instance.stamina >= 80)
 			{
 				if (state != BattleState.PLAYERTURN)
-				return;
+					return;
 				BackpackManager.Instance.fondoItems.SetActive(false);
 				BackpackManager.Instance.slotsItems.SetActive(false);
 				BackpackManager.Instance.slotsGh.SetActive(false);
@@ -435,7 +554,7 @@ public class BattleSystem : MonoBehaviour
 				a = 1;
 			}
 			else
-			dialogueText.text = "¡Stamina insuficiente!";
+				dialogueText.text = "¡Stamina insuficiente!";
 		}
 	}
 
@@ -458,9 +577,9 @@ public class BattleSystem : MonoBehaviour
 		if (b == 0)
 		{
 			if (state != BattleState.PLAYERTURN)
-			return;
+				return;
 
-		StartCoroutine(AttackSelect());
+			StartCoroutine(AttackSelect());
 			b = 1;
 		}
 	}
@@ -470,12 +589,12 @@ public class BattleSystem : MonoBehaviour
 		if (b == 0)
 		{
 			if (state != BattleState.PLAYERTURN)
-			return;
+				return;
 
-		StartCoroutine(InvEscape());
+			StartCoroutine(InvEscape());
 			b = 1;
 		}
-	}	
+	}
 
 	public void OnBackButton()
 	{
@@ -495,7 +614,7 @@ public class BattleSystem : MonoBehaviour
 		if (c == 0)
 		{
 			if (state != BattleState.PLAYERTURN)
-			return;
+				return;
 
 			BackpackManager.Instance.slotsGh.SetActive(false);
 			PlayerInv();
@@ -522,12 +641,12 @@ public class BattleSystem : MonoBehaviour
 		if (c == 0)
 		{
 			if (state != BattleState.PLAYERTURN)
-			return;
-		BackpackManager.Instance.fondoItems.SetActive(false);
-		BackpackManager.Instance.slotsItems.SetActive(false);
-		BackpackManager.Instance.slotsGh.SetActive(false);
+				return;
+			BackpackManager.Instance.fondoItems.SetActive(false);
+			BackpackManager.Instance.slotsItems.SetActive(false);
+			BackpackManager.Instance.slotsGh.SetActive(false);
 
-		StartCoroutine(CharcSelect());
+			StartCoroutine(CharcSelect());
 			c = 1;
 		}
 	}
@@ -564,7 +683,7 @@ public class BattleSystem : MonoBehaviour
 		b = 0;
 		c = 0;
 		playerHUD.SetHUDP(playerUnit);
-		playerUnit.currentHP=StatsManager.Instance._maxHP;
+		playerUnit.currentHP = StatsManager.Instance._maxHP;
 		StartCoroutine(Back());
 	}
 	public void ButtonNo()
@@ -575,3 +694,4 @@ public class BattleSystem : MonoBehaviour
 		StartCoroutine(Back());
 	}
 }
+

@@ -19,6 +19,7 @@ TagManager:
   - InventarioGh
   - GhSlot
   - GhSelector
+  - Boss
   layers:
   - Default
   - TransparentFX

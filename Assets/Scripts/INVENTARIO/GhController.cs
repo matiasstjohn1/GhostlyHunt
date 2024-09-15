@@ -24,7 +24,7 @@ public class GhController : MonoBehaviour
     public void colocarInv()
     {
         Debug.Log("Index:" + unit.nameIndex);
-        AudioManager.instance.PlaySound(5);
+        AudioManager.instance.PlayCombatSounds(5);
         GameObject[] inventario = GameObject.FindGameObjectWithTag("InventarioM").GetComponent<InventoryGh>().getSlots();
 
 

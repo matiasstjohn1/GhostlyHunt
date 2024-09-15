@@ -94,14 +94,21 @@ MonoBehaviour:
   - {fileID: 214659783, guid: 78658adf9cb8e274d84d11f611505672, type: 3}
   - {fileID: 229827398, guid: 2d7341273133fec428a952bc8e6db063, type: 3}
   - {fileID: -34324713, guid: 9da978ba617f8284fa3747956eb3b087, type: 3}
+  - {fileID: 21300000, guid: 5dadbd7199ad3f643a9124bf2cb3000a, type: 3}
+  - {fileID: 21300000, guid: 48ac24150a15c104882b915c983e4883, type: 3}
+  - {fileID: 21300000, guid: 3c8381898b7cb4648abe9de2dab79164, type: 3}
   unitName:
   - Firy
   - Ruion
   - Kronk
   - Chork
+  - Lopin
+  - Wluil
+  - Manue
   currentHP: 0
   _spawner:
   - {fileID: 0}
+  player: {fileID: 0}
   nameIndex: 0
   randomLvl: 0
   randomDamage: 0
@@ -123,5 +130,8 @@ MonoBehaviour:
   - {fileID: 8359565705699514894, guid: 05c133ba74277a2468b855efe959edb0, type: 3}
   - {fileID: 8359565705699514894, guid: df4cf345bee04d84ea70be7d8a2fa56a, type: 3}
   - {fileID: 8359565705699514894, guid: 61c6976f460d3594ba4f164448b27036, type: 3}
+  - {fileID: 8359565705699514894, guid: 7d9e5b2738f4854429a30844b66e3cab, type: 3}
+  - {fileID: 8359565705699514894, guid: 0dc13eddec364cf409415cc3226558f9, type: 3}
+  - {fileID: 8359565705699514894, guid: 24ef6bc04f1e92a459674d488a579062, type: 3}
   cant: 1
   GhID: 0
