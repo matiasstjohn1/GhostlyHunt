@@ -65,12 +65,7 @@ public class BattleSystem : MonoBehaviour
 			var curr = nameInfo[i];
 			_captura[curr._chance] = curr.weight;
 		} 
-		_Ataque = new Dictionary<AtackEnum, int>();
-        for (int i = 0; i < ataqueInfo.Count; i++)
-        {
-            var curre = ataqueInfo[i];
-            _Ataque[curre._Chance] = curre.weight;
-        }
+
 		state = BattleState.START;
 		_spawner = GameObject.FindGameObjectsWithTag("Spawner");
 		movement = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement_Main>();
@@ -84,7 +79,13 @@ public class BattleSystem : MonoBehaviour
 		{
 			enemyUnit.ChangeSprite(enemyUnit.nameIndex);
 		}
-	}
+        _Ataque = new Dictionary<AtackEnum, int>();
+        for (int i = 0; i < ataqueInfo.Count; i++)
+        {
+            var curre = ataqueInfo[i];
+            _Ataque[curre._Chance] = curre.weight;
+        }
+    }
 
     public void SetUpC()
     {
