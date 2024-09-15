@@ -8,7 +8,7 @@ public class StartCombat : MonoBehaviour
 
     //Sistema de Combate//
     BattleSystem battle;
-    [SerializeField] GameObject imageBattale; 
+    [SerializeField] GameObject imageBattale;
 
     void Start()
     {

@@ -19,6 +19,7 @@ public class BattleSystem : MonoBehaviour
 	UnitP playerUnit;
 	Unit enemyUnit;
 	UnitBoss enemyBossUnit;
+	StartCombat StartCombat;
 
 	public Text dialogueText;
 
@@ -61,9 +62,11 @@ public class BattleSystem : MonoBehaviour
 	public int b = 0; //Botones de abrir (inv y ataques).
 	public int c = 0; //Botones de soporte (inv y ghostly cambio).
 
-	public GameObject bosszoneprefab;
+	public GameObject[] Boss;
 
-	void Start()
+	GameObject player;
+
+    void Start()
 	{
 		_captura = new Dictionary<Capturaenum, int>();
 		for (int i = 0; i < nameInfo.Count; i++)
@@ -78,7 +81,9 @@ public class BattleSystem : MonoBehaviour
 
 	}
 
-	private void Update()
+
+
+    private void Update()
 	{
 		if (enemyUnit != null)
 		{
@@ -91,7 +96,44 @@ public class BattleSystem : MonoBehaviour
 			var curre = ataqueInfo[i];
 			_Ataque[curre._Chance] = curre.weight;
 		}
-	}
+
+		if (Boss != null)
+		{
+			// Encuentra todos los spawners y el jugador
+			Boss = GameObject.FindGameObjectsWithTag("BossMap");
+			player = GameObject.FindGameObjectWithTag("Player");
+
+			GameObject closest = null;
+			float closestDistance = Mathf.Infinity;
+
+			// Itera sobre todos los spawners para encontrar el más cercano
+			foreach (GameObject boss in Boss)
+			{
+				Vector3 bossPosition = boss.transform.position;
+				Vector3 playerPosition = player.transform.position;
+				Vector3 diff = bossPosition - playerPosition;
+				float distance = diff.sqrMagnitude;
+
+				// Compara la distancia para encontrar el spawner más cercano
+				if (distance < closestDistance)
+				{
+					closest = boss;
+					closestDistance = distance;
+				}
+			}
+			try { 
+			Boss[Boss.Length - 1] = Boss[0];
+			Boss[0] = closest;
+            }
+			catch (System.IndexOutOfRangeException ex)
+            { 
+
+			}
+
+        }
+		
+
+    }
 
 	public void SetUpC()
 	{
@@ -174,12 +216,13 @@ public class BattleSystem : MonoBehaviour
 		{
 			state = BattleState.WON;
 			StartCoroutine(EndBattle());
+			if(enemyBossUnit!=null)
+			{
+				Destroy(Boss[0]);
+			}
 			yield return new WaitForSeconds(2f);
 			imageBattale.SetActive(false);
-			if(enemyBossUnit!=null)
-			{ 
-				Destroy(bosszoneprefab);
-			}
+
 		}
 		else
 		{
