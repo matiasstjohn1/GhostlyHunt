@@ -19,6 +19,8 @@ TagManager:
   - InventarioGh
   - GhSlot
   - GhSelector
+  - Boss
+  - BossMap
   layers:
   - Default
   - TransparentFX

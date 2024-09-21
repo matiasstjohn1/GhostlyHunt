@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2852725696478035577}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.397, y: 6.047, z: 0}
-  m_LocalScale: {x: 0.33948362, y: 0.33948362, z: 0.33948362}
+  m_LocalPosition: {x: -54.75, y: 7.08, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2852725696478035460
 SpriteRenderer:
@@ -73,9 +73,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: 1177669645
+  m_SortingLayer: 8
+  m_SortingOrder: 100
   m_Sprite: {fileID: -726491998, guid: 3679b1e0ad28f2047b616f6f64fde9c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -94,9 +94,28 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2852725696478035577}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -130,6 +149,12 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -149,7 +174,10 @@ MonoBehaviour:
   Jugador: {fileID: 0}
   vel: 4
   sprites:
-  - {fileID: -1540510159, guid: 4131282eb73d4494da891465eca7312f, type: 3}
-  - {fileID: -1172959541, guid: 2deead78a44271c49a936925d56c5d40, type: 3}
-  - {fileID: 589327301, guid: 2d6c7d1015c84a543b1d4dbc340baba2, type: 3}
-  - {fileID: 21300000, guid: 2e76cfbdbf18e9c4e995a8e551dc78be, type: 3}
+  - {fileID: -726491998, guid: 3679b1e0ad28f2047b616f6f64fde9c0, type: 3}
+  - {fileID: 214659783, guid: 78658adf9cb8e274d84d11f611505672, type: 3}
+  - {fileID: 229827398, guid: 2d7341273133fec428a952bc8e6db063, type: 3}
+  - {fileID: -34324713, guid: 9da978ba617f8284fa3747956eb3b087, type: 3}
+  - {fileID: 21300000, guid: 5dadbd7199ad3f643a9124bf2cb3000a, type: 3}
+  - {fileID: 21300000, guid: 48ac24150a15c104882b915c983e4883, type: 3}
+  - {fileID: 21300000, guid: 3c8381898b7cb4648abe9de2dab79164, type: 3}

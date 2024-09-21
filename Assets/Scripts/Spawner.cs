@@ -36,9 +36,9 @@ public class Spawner : MonoBehaviour
         }
 
         currentTime += Time.deltaTime;
-        if(currentTime >=2)
+        if (currentTime >= 2)
         {
-            _random =(int)MyRandoms.Range(0, 11);
+            _random = (int)MyRandoms.Range(0, 11);
             currentTime = 0;
         }
         tiempoCombat += Time.deltaTime;
@@ -49,16 +49,16 @@ public class Spawner : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if(tiempoCombat >=3)
+            if (tiempoCombat >= 3)
             {
-                if (_random==6 || _random==7 || _random == 8 || _random == 9 || _random == 10)
+                if (_random == 6 || _random == 7 || _random == 8 || _random == 9 || _random == 10)
                 {
                     Debug.Log(_random);
-                    if (a==0)
-                    {       
+                    if (a == 0)
+                    {
                         BackpackManager.Instance.fondoItems.SetActive(false);
                         BackpackManager.Instance.slotsItems.SetActive(false);
-                        BackpackManager.Instance.slotsGh.SetActive(false); 
+                        BackpackManager.Instance.slotsGh.SetActive(false);
                         imageBattale.SetActive(true);
                         battle.SetUpC();
                         a = 1;
