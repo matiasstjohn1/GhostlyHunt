@@ -81,8 +81,6 @@ public class BattleSystem : MonoBehaviour
 
 	}
 
-
-
     private void Update()
 	{
 		if (enemyUnit != null)
@@ -122,18 +120,17 @@ public class BattleSystem : MonoBehaviour
 				}
 			}
 			try { 
+			if(Boss.Length >=2)
 			Boss[Boss.Length - 1] = Boss[0];
 			Boss[0] = closest;
             }
 			catch (System.IndexOutOfRangeException ex)
-            { 
-
+            {
+				Debug.Log(ex);
+				GameManager.Instance.obv5 = true;
 			}
-
         }
-		
-
-    }
+	}
 
 	public void SetUpC()
 	{
@@ -219,6 +216,8 @@ public class BattleSystem : MonoBehaviour
 			if(enemyBossUnit!=null)
 			{
 				Destroy(Boss[0]);
+				GameManager.Instance.bossCount += 1;
+				GameManager.Instance.ActualizarObjetivo5();
 			}
 			yield return new WaitForSeconds(2f);
 			imageBattale.SetActive(false);
@@ -268,6 +267,12 @@ public class BattleSystem : MonoBehaviour
 		{
 			state = BattleState.WON;
 			StartCoroutine(EndBattle());
+			if (enemyBossUnit != null)
+			{
+				Destroy(Boss[0]);
+				GameManager.Instance.bossCount += 1;
+				GameManager.Instance.ActualizarObjetivo5();
+			}
 			yield return new WaitForSeconds(2f);
 			imageBattale.SetActive(false);
 		}
