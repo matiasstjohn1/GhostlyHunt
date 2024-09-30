@@ -399,9 +399,7 @@ public class BattleSystem : MonoBehaviour
 			AudioManager.instance.PlayCombatSounds(6);
 			dialogueText.text = "¡Ganaste la batalla!";
 			yield return new WaitForSeconds(1f);
-			imageBattale.SetActive(false);
-			hudAttack.SetActive(false);
-			hudBase.SetActive(true);
+
 			foreach (GameObject _spawner in _spawner)
 			{
 				_spawner.GetComponent<Spawner>().a = 0;
@@ -428,8 +426,11 @@ public class BattleSystem : MonoBehaviour
 			StatsManager.Instance.stamina = 100;
 			Destroy(enemyGO);
 			Destroy(playerGO, 0.1f);
+            imageBattale.SetActive(false);
+            hudAttack.SetActive(false);
+            hudBase.SetActive(true);
 
-		}
+        }
 		else if (state == BattleState.LOST)
 		{
 
@@ -437,7 +438,7 @@ public class BattleSystem : MonoBehaviour
 			dialogueText.text = "¡Has perdido!.";
 			yield return new WaitForSeconds(2f);
 			AudioManager.instance.StopSounds();
-			GameManager.Instance.CharacterPassAway();
+			
 			Destroy(enemyGO);
 			Destroy(playerGO);
 			foreach (GameObject _spawner in _spawner)
@@ -445,6 +446,7 @@ public class BattleSystem : MonoBehaviour
 				_spawner.GetComponent<Spawner>().a = 0;
 				_spawner.GetComponent<Spawner>().tiempoCombat = 0;
 			}
+			GameManager.Instance.CharacterPassAway();
 		}
 	}
 
@@ -534,12 +536,8 @@ public class BattleSystem : MonoBehaviour
 
 		if (chance == 0 && bossBattle == false)
 		{
-			foreach (GameObject _spawner in _spawner)
-			{
-				_spawner.GetComponent<Spawner>().a = 0;
-				_spawner.GetComponent<Spawner>().tiempoCombat = 0;
-			}
-			movement.velocidadMovimiento = movement.velmovsave;
+
+			
 			dialogueText.text = "¡Captura en 3...2...1!";
 			yield return new WaitForSeconds(2f);
 			AudioManager.instance.PlayCombatSounds(6);
@@ -558,9 +556,16 @@ public class BattleSystem : MonoBehaviour
 			yield return new WaitForSeconds(2f);
 			Destroy(enemyGO);
 			Destroy(playerGO);
-			imageBattale.SetActive(false);
+            foreach (GameObject _spawner in _spawner)
+            {
+                _spawner.GetComponent<Spawner>().a = 0;
+                _spawner.GetComponent<Spawner>().tiempoCombat = 0;
+            } 
+            movement.velocidadMovimiento = movement.velmovsave;
+            imageBattale.SetActive(false);
 			hudInv.SetActive(false);
 			hudBase.SetActive(true);
+
 
 		}
 		if (chance == 1&&bossBattle==false)
