@@ -25,7 +25,7 @@ public class AttributesItems : MonoBehaviour
     public void ActiveItem()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        AudioManager.instance.PlayCombatSounds(0);
+        AudioManager.instance.PlayCombatSounds(7);
         if (type == StatType.vel)
         {
            player.GetComponent<Movement_Main>().velocidadMovimiento += amount;

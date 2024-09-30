@@ -7,64 +7,68 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
 public class BattleSystem : MonoBehaviour
 {
-	[SerializeField] GameObject imageBattale;
-
+	[Header("				Variables del Script")]
+	[SerializeField] GameObject imageBattale; //Escena del combate
+	public BattleState state;
+	[Header("Prefabs")]
 	public GameObject playerPrefab;
 	public GameObject enemyPrefab;
 	public GameObject enemyBossPrefab;
 
+	[Header("Posiciones de batalla")]
 	public Transform playerBattleStation;
 	public Transform enemyBattleStation;
 
+	[Header("Scripts de unidades")]
 	UnitP playerUnit;
 	Unit enemyUnit;
 	UnitBoss enemyBossUnit;
 	StartCombat StartCombat;
 
+	[Header("Canvas")]
 	public Text dialogueText;
-
 	public BattleHudP playerHUD;
 	public BattleHUD enemyHUD;
-
-	public BattleState state;
-
 	public GameObject hudBase;
 	public GameObject hudInv;
 	public GameObject hudChar;
 	public GameObject hudConfirmChar;
 	public GameObject hudAttack;
-
-	public int index;
-
-	private GameObject enemyGO;
-	private GameObject playerGO;
-
 	public GameObject attackImage; //efecto ataque player.
 	public GameObject _attackImage;//efecto ataque normal enemigo.
 	public GameObject _attackImage2; //efecto ataque especial enemigo.
-	public GameObject[] _spawner;
 
-	private Ghostlymanager GhManager;
+	[Header("Calls de turnos")]
+	public int index;
+	private GameObject enemyGO;
+	private GameObject playerGO;
+
+	[Header("Spawners del mundo")]
+	public GameObject[] _spawner; //Spawners del mundo.
+
+	private Ghostlymanager GhManager; //Llamo al GhostlyManager.
 	private int ant;
-	private Movement_Main movement;
-
-	//Captura
+	private Movement_Main movement; //Movimiento del player al estar en combate.
 	Dictionary<Capturaenum, int> _captura;
+
+	[Header("Probabilidad de captura")]
 	public List<CapturaInfo> nameInfo;
 
-	//Ataque enemigo
 	Dictionary<AtackEnum, int> _Ataque;
+	[Header("Ataque enemigo")]
 	public List<TipeAttack> ataqueInfo;
 
+	[Header("Numericas de estadisticas")]
 	public List<StatsSave2> Statsinfo = new List<StatsSave2>();
 	public int i = 0; //Captura randoms
 	public int a = 0; //Botones de uso combate (especial, basico, escape y captura).
 	public int b = 0; //Botones de abrir (inv y ataques).
 	public int c = 0; //Botones de soporte (inv y ghostly cambio).
 
+	[Header("Jefe")]
 	public GameObject[] Boss;
-
 	GameObject player;
+	public bool bossBattle = false;
 
     void Start()
 	{
@@ -104,7 +108,7 @@ public class BattleSystem : MonoBehaviour
 			GameObject closest = null;
 			float closestDistance = Mathf.Infinity;
 
-			// Itera sobre todos los spawners para encontrar el más cercano
+			//Itera sobre todos los spawners para encontrar el más cercano
 			foreach (GameObject boss in Boss)
 			{
 				Vector3 bossPosition = boss.transform.position;
@@ -112,7 +116,7 @@ public class BattleSystem : MonoBehaviour
 				Vector3 diff = bossPosition - playerPosition;
 				float distance = diff.sqrMagnitude;
 
-				// Compara la distancia para encontrar el spawner más cercano
+				//Compara la distancia para encontrar el spawner más cercano
 				if (distance < closestDistance)
 				{
 					closest = boss;
@@ -134,10 +138,12 @@ public class BattleSystem : MonoBehaviour
 
 	public void SetUpC()
 	{
+		bossBattle = false;
 		StartCoroutine(SetupBattle());
 	}
 	public void SetUpB()
 	{
+		bossBattle = true;
 		StartCoroutine(SetupBossBattle());
 	}
 
@@ -196,7 +202,7 @@ public class BattleSystem : MonoBehaviour
 
 			StatsManager.Instance.stamina -= 10;
 		}
-		if (enemyBossUnit != null)
+		if (bossBattle==true)
 		{
 			isDead = enemyBossUnit.TakeDamage(StatsManager.Instance._damage);
 			enemyHUD.SetHP(enemyBossUnit.currentHP); //Vida enemy.
@@ -213,7 +219,7 @@ public class BattleSystem : MonoBehaviour
 		{
 			state = BattleState.WON;
 			StartCoroutine(EndBattle());
-			if(enemyBossUnit!=null)
+			if(enemyBossUnit!=null) 
 			{
 				Destroy(Boss[0]);
 				GameManager.Instance.bossCount += 1;
@@ -230,7 +236,7 @@ public class BattleSystem : MonoBehaviour
 				state = BattleState.ENEMYTURN;
 				StartCoroutine(EnemyTurn());
 			}
-			if (enemyBossUnit != null)
+			if (bossBattle==true)
 			{
 				state = BattleState.ENEMYTURN;
 				StartCoroutine(EnemyBossTurn());
@@ -251,7 +257,7 @@ public class BattleSystem : MonoBehaviour
 			StatsManager.Instance.stamina -= 80;
 		}
 
-		if (enemyBossUnit != null)
+		if (bossBattle == true)
 		{
 			isDead = enemyBossUnit.TakeDamage(StatsManager.Instance._damage + (StatsManager.Instance._damage * 10 / 100));
 			enemyHUD.SetHP(enemyBossUnit.currentHP); //Vida enemy.
@@ -267,7 +273,7 @@ public class BattleSystem : MonoBehaviour
 		{
 			state = BattleState.WON;
 			StartCoroutine(EndBattle());
-			if (enemyBossUnit != null)
+			if (enemyBossUnit != null) 
 			{
 				Destroy(Boss[0]);
 				GameManager.Instance.bossCount += 1;
@@ -283,7 +289,7 @@ public class BattleSystem : MonoBehaviour
 				state = BattleState.ENEMYTURN;
 				StartCoroutine(EnemyTurn());
 			}
-			if (enemyBossUnit != null)
+			if (bossBattle == true)
 			{
 				state = BattleState.ENEMYTURN;
 				StartCoroutine(EnemyBossTurn());
@@ -309,7 +315,7 @@ public class BattleSystem : MonoBehaviour
 			Debug.Log("ataque sp");
 
 			isDead = playerUnit.TakeDamage((int)enemyUnit.randomDamage + (int)(enemyUnit.randomDamage * 0.3f));
-			AudioManager.instance.PlayCombatSounds(2);
+			AudioManager.instance.PlayCombatSounds(0);
 
 			playerHUD.SetHP(playerUnit.currentHP);
 
@@ -321,7 +327,7 @@ public class BattleSystem : MonoBehaviour
 			_attackImage.SetActive(true);
 			Debug.Log("ataque norm");
 			isDead = playerUnit.TakeDamage((int)enemyUnit.randomDamage);
-			AudioManager.instance.PlayCombatSounds(2);
+			AudioManager.instance.PlayCombatSounds(0);
 
 			playerHUD.SetHP(playerUnit.currentHP);
 
@@ -354,7 +360,7 @@ public class BattleSystem : MonoBehaviour
 			Debug.Log("ataque sp");
 
 			isDead = playerUnit.TakeDamage((int)enemyBossUnit.Damage + (int)(enemyBossUnit.Damage * 0.3f));
-			AudioManager.instance.PlayCombatSounds(2);
+			AudioManager.instance.PlayCombatSounds(0);
 
 			playerHUD.SetHP(playerUnit.currentHP);
 
@@ -366,7 +372,7 @@ public class BattleSystem : MonoBehaviour
 			_attackImage.SetActive(true);
 			Debug.Log("ataque norm");
 			isDead = playerUnit.TakeDamage((int)enemyBossUnit.Damage);
-			AudioManager.instance.PlayCombatSounds(2);
+			AudioManager.instance.PlayCombatSounds(0);
 
 			playerHUD.SetHP(playerUnit.currentHP);
 
@@ -390,7 +396,7 @@ public class BattleSystem : MonoBehaviour
 	{
 		if (state == BattleState.WON)
 		{
-			AudioManager.instance.PlayCombatSounds(4);
+			AudioManager.instance.PlayCombatSounds(6);
 			dialogueText.text = "¡Ganaste la batalla!";
 			yield return new WaitForSeconds(1f);
 			imageBattale.SetActive(false);
@@ -427,7 +433,7 @@ public class BattleSystem : MonoBehaviour
 		else if (state == BattleState.LOST)
 		{
 
-			AudioManager.instance.PlayCombatSounds(3);
+			AudioManager.instance.PlayCombatSounds(5);
 			dialogueText.text = "¡Has perdido!.";
 			yield return new WaitForSeconds(2f);
 			AudioManager.instance.StopSounds();
@@ -459,7 +465,7 @@ public class BattleSystem : MonoBehaviour
 	public IEnumerator PlayerHeal(int amount)
 	{
 		playerUnit.Heal(amount);
-		AudioManager.instance.PlayCombatSounds(7);
+		AudioManager.instance.PlayCombatSounds(3);
 		playerHUD.SetHP(playerUnit.currentHP);
 		dialogueText.text = "¡Te has curado!";
 		GameObject.FindGameObjectWithTag("InventarioM").GetComponent<InventroyManager>().showInventory();
@@ -476,7 +482,7 @@ public class BattleSystem : MonoBehaviour
 		}
 		movement.velocidadMovimiento = movement.velmovsave;
 		dialogueText.text = "¡Te has escapado!";
-		AudioManager.instance.PlayCombatSounds(6);
+		AudioManager.instance.PlayCombatSounds(2);
 		yield return new WaitForSeconds(1f);
 		imageBattale.SetActive(false);
 		Destroy(enemyGO);
@@ -521,11 +527,12 @@ public class BattleSystem : MonoBehaviour
 		var Capt = MyRandoms.Roulette(_captura); //Uso del My Random.
 		return (int)Capt;
 	}
-
+	
 	public IEnumerator PlayerCapture()
 	{
 		int chance = GetRandomChance();
-		if (chance == 0)
+
+		if (chance == 0 && bossBattle == false)
 		{
 			foreach (GameObject _spawner in _spawner)
 			{
@@ -535,7 +542,7 @@ public class BattleSystem : MonoBehaviour
 			movement.velocidadMovimiento = movement.velmovsave;
 			dialogueText.text = "¡Captura en 3...2...1!";
 			yield return new WaitForSeconds(2f);
-			AudioManager.instance.PlayCombatSounds(4);
+			AudioManager.instance.PlayCombatSounds(6);
 			dialogueText.text = "¡Captura exitosa!";
 			GameManager.Instance.obv3 = true;
 			GhController.Instance.colocarInv();
@@ -556,7 +563,7 @@ public class BattleSystem : MonoBehaviour
 			hudBase.SetActive(true);
 
 		}
-		else
+		if (chance == 1&&bossBattle==false)
 		{
 			dialogueText.text = "¡Captura en 3...2...1!";
 			yield return new WaitForSeconds(2f);
@@ -566,7 +573,15 @@ public class BattleSystem : MonoBehaviour
 			StartCoroutine(Back());
 			StartCoroutine(EnemyTurn());
 		}
-	}
+		if (bossBattle == true) 
+		{
+            dialogueText.text = "¡No puedes capturarlo!";
+            yield return new WaitForSeconds(2f);
+            state = BattleState.ENEMYTURN;
+            StartCoroutine(Back());
+            StartCoroutine(EnemyBossTurn());
+        }
+    }
 
 	public void OnAttackButton()
 	{
