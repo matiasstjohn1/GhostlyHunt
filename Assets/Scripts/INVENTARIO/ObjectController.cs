@@ -12,7 +12,7 @@ public class ObjectController : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            AudioManager.instance.PlayCombatSounds(5);
+            AudioManager.instance.PlayCombatSounds(4);
             GameObject[] inventario = GameObject.FindGameObjectWithTag("InventarioM").GetComponent<InventroyManager>().getSlots();
             GameManager.Instance.obv1 = true;
 

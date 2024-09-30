@@ -9,6 +9,7 @@ public class NextScene : MonoBehaviour
     {
         if (collision.gameObject.layer == 3)
         {
+            AudioManager.instance.StopSounds();
             SceneManager.LoadScene(2);
         }
     }

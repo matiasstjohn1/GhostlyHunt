@@ -36,7 +36,7 @@ public class GhostlySave : MonoBehaviour
 
     public void Ghostly1()
     {
-        AudioManager.instance.PlayCombatSounds(0);
+        AudioManager.instance.PlayCombatSounds(8);//CAMBIAR SONIDO
 
         if (battleSystem != null && battleSystem.Statsinfo != null && battleSystem.Statsinfo.Count > 0)
         {
@@ -59,7 +59,7 @@ public class GhostlySave : MonoBehaviour
     }
     public void Ghostly2()
     {
-        AudioManager.instance.PlayCombatSounds(0);
+        AudioManager.instance.PlayCombatSounds(8);//CAMBIAR SONIDO
 
         if (battleSystem != null && battleSystem.Statsinfo != null && battleSystem.Statsinfo.Count > 0)
         {
@@ -82,7 +82,7 @@ public class GhostlySave : MonoBehaviour
     }
     public void Ghostly3()
     {
-        AudioManager.instance.PlayCombatSounds(0);
+        AudioManager.instance.PlayCombatSounds(8);//CAMBIAR SONIDO
 
         if (battleSystem != null && battleSystem.Statsinfo != null && battleSystem.Statsinfo.Count > 0)
         {
@@ -106,7 +106,7 @@ public class GhostlySave : MonoBehaviour
 
     public void Freedom()
     {
-        AudioManager.instance.PlayCombatSounds(0);
+        AudioManager.instance.PlayCombatSounds(9);//CAMBIAR SONIDO
 
         if (inventoryGh != null)
         {
