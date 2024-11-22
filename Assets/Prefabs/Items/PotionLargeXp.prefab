@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8058595301640616479}
   - component: {fileID: 8058595301640616478}
   - component: {fileID: 3947272739628171464}
+  - component: {fileID: -6122230767466916433}
   m_Layer: 6
   m_Name: PotionLargeXp
   m_TagString: Slot
@@ -26,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8058595301640616481}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.123997, y: 1.3009996, z: 1.8659009}
   m_LocalScale: {x: 0.39737833, y: 0.39737833, z: 0.3363622}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8058595301640616479
 SpriteRenderer:
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1015382429
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 859959447, guid: 9f940471050fb864dbd761e99242b80b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -96,6 +97,25 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -127,3 +147,16 @@ MonoBehaviour:
   obj: {fileID: 8359565705699514894, guid: cd5b0ca930f6e6a44823d7aee2e3bec9, type: 3}
   cant: 1
   itemID: 3
+--- !u!114 &-6122230767466916433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8058595301640616481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f20db94abca37ae4db197b6578e532a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockIndex: 13

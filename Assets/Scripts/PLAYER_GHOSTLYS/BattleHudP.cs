@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class BattleHudP : MonoBehaviour
 {
-
 	//Variable player//
 	public Text nameTextP;
 	public Text levelTextP;
@@ -18,8 +17,8 @@ public class BattleHudP : MonoBehaviour
 	public void SetHUDP(UnitP unitp)
 	{
 		nameTextP.text = unitp.unitName[StatsManager.Instance._index];
-		levelTextP.text = "Lvl: " + StatsManager.Instance._unitLevel; 
-		damageTextP.text = "Damage: " + StatsManager.Instance._damage;
+		levelTextP.text = "" + StatsManager.Instance._unitLevel; 
+		damageTextP.text = "" + StatsManager.Instance._damage;
 		stamina.text = "Stamina: "+ StatsManager.Instance.stamina;
 	}
 
@@ -27,7 +26,7 @@ public class BattleHudP : MonoBehaviour
     {
 		_unitp= GameObject.FindGameObjectWithTag("Unit").GetComponent<UnitP>();
 		hpSliderP.fillAmount = _unitp.currentHP / StatsManager.Instance._maxHP;
-		HPP.text = "HP: " + _unitp.currentHP;
+		HPP.text = "" + _unitp.currentHP;
 		stamina.text = "Stamina: " + StatsManager.Instance.stamina;
 	}
 

@@ -6,7 +6,8 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    public List<AudioClip> audioClips = new List<AudioClip>();
+    public List<AudioClip> audioClipsAssets = new List<AudioClip>();
+    public List<AudioClip> audioClipsMusic = new List<AudioClip>();
 
     private AudioSource audioSource;
 
@@ -27,14 +28,15 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject); //Impido q se destruya en escena.
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.volume = defaultVolume;
-        PlaySound(12);
+        audioSource.loop=true;
+        PlaySound(0);
     }
 
     public void PlaySound(int soundIndex)
     {
-        if (soundIndex >= 0 && soundIndex < audioClips.Count)
+        if (soundIndex >= 0 && soundIndex < audioClipsMusic.Count)
         {
-            audioSource.clip = audioClips[soundIndex];
+            audioSource.clip = audioClipsMusic[soundIndex];
             audioSource.Play();
         }
     }
@@ -52,9 +54,9 @@ public class AudioManager : MonoBehaviour
     }
     public void PlayCombatSounds(int soundIndex)
     {
-        if (soundIndex >= 0 && soundIndex < audioClips.Count)
+        if (soundIndex >= 0 && soundIndex < audioClipsAssets.Count)
         {
-            audioSource.PlayOneShot(audioClips[soundIndex]);
+            audioSource.PlayOneShot(audioClipsAssets[soundIndex]);
         }
     }
 }

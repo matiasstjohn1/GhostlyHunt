@@ -1,49 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Partner : MonoBehaviour
 {
     //Variables pre definidas.//
-    SpriteRenderer spriteRenderer;
-    //Sigue al jugador la camara con una velocidad elegida por nosotros.
-    [SerializeField] GameObject Jugador;
-    [SerializeField] float vel;
-    private bool isFacingRight = false;
+    Image image1,image2,image3;
     public List<Sprite> sprites; //Acompañantes.
-
-    Vector3 newPos;
+    public GameObject ghostly1,ghostly2,ghostly3;
 
     private void Start()
     {
-       spriteRenderer = GetComponent<SpriteRenderer>();
+        image1 = ghostly1.GetComponent<Image>();
+        image2 = ghostly2.GetComponent<Image>();
+        image3 = ghostly3.GetComponent<Image>();
+
     }
 
     private void Update()
     {
-        newPos = Vector3.Lerp(transform.position, Jugador.transform.position, vel * Time.deltaTime);
-
-        if (transform.position.x < Jugador.transform.position.x && !isFacingRight)
+        ChangeSprite();
+        //DESACTIVAR//
+        if(StatsSave.Instance.currentHealth1 <=0)
         {
-            LookDir();
+            ghostly1.SetActive(false);
         }
-        else if (transform.position.x > Jugador.transform.position.x && isFacingRight)
+        if (StatsSave.Instance.currentHealth2 <= 0)
         {
-            LookDir();
+            ghostly2.SetActive(false);
         }
-
-        transform.position = newPos;
-        ChangeSprite(StatsManager.Instance._index);
+        if (StatsSave.Instance.currentHealth3 <= 0)
+        {
+            ghostly3.SetActive(false);
+        }
+        //ACTIVAR//
+        if (StatsSave.Instance.currentHealth1 > 0)
+        {
+            ghostly1.SetActive(true);
+        }
+        if (StatsSave.Instance.currentHealth2 > 0)
+        {
+            ghostly2.SetActive(true);
+        }
+        if (StatsSave.Instance.currentHealth3 > 0)
+        {
+            ghostly3.SetActive(true);
+        }
     }
 
-    public void ChangeSprite(int index)
+    public void ChangeSprite()
     {
-       spriteRenderer.sprite = sprites[index];
-    }
-
-    public void LookDir()
-    {
-        isFacingRight = !isFacingRight;
-        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        image1.sprite = sprites[StatsSave.Instance._nameIndex1];
+        image2.sprite = sprites[StatsSave.Instance._nameIndex2];
+        image3.sprite = sprites[StatsSave.Instance._nameIndex3];
     }
 }

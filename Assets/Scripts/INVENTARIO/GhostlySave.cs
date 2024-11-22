@@ -36,7 +36,7 @@ public class GhostlySave : MonoBehaviour
 
     public void Ghostly1()
     {
-        AudioManager.instance.PlayCombatSounds(0);
+        AudioManager.instance.PlayCombatSounds(8);
 
         if (battleSystem != null && battleSystem.Statsinfo != null && battleSystem.Statsinfo.Count > 0)
         {
@@ -49,6 +49,7 @@ public class GhostlySave : MonoBehaviour
             StatsSave.Instance._damage1 = statInfo._damage;
             StatsSave.Instance._HPmax1 = statInfo._HPmax;
             StatsSave.Instance._lvl1 = statInfo._lvl;
+            StatsSave.Instance.currentHealth1 = statInfo._HPmax;
             battleSystem.i -= 1;
         }
 
@@ -59,7 +60,7 @@ public class GhostlySave : MonoBehaviour
     }
     public void Ghostly2()
     {
-        AudioManager.instance.PlayCombatSounds(0);
+        AudioManager.instance.PlayCombatSounds(8);
 
         if (battleSystem != null && battleSystem.Statsinfo != null && battleSystem.Statsinfo.Count > 0)
         {
@@ -72,6 +73,7 @@ public class GhostlySave : MonoBehaviour
             StatsSave.Instance._damage2 = statInfo._damage;
             StatsSave.Instance._HPmax2 = statInfo._HPmax;
             StatsSave.Instance._lvl2 = statInfo._lvl;
+            StatsSave.Instance.currentHealth2 = statInfo._HPmax;
             battleSystem.i -= 1;
         }
 
@@ -82,7 +84,7 @@ public class GhostlySave : MonoBehaviour
     }
     public void Ghostly3()
     {
-        AudioManager.instance.PlayCombatSounds(0);
+        AudioManager.instance.PlayCombatSounds(8);
 
         if (battleSystem != null && battleSystem.Statsinfo != null && battleSystem.Statsinfo.Count > 0)
         {
@@ -95,6 +97,7 @@ public class GhostlySave : MonoBehaviour
             StatsSave.Instance._damage3 = statInfo._damage;
             StatsSave.Instance._HPmax3 = statInfo._HPmax;
             StatsSave.Instance._lvl3 = statInfo._lvl;
+            StatsSave.Instance.currentHealth3 = statInfo._HPmax;
             battleSystem.i -= 1;
         }
 
@@ -106,7 +109,7 @@ public class GhostlySave : MonoBehaviour
 
     public void Freedom()
     {
-        AudioManager.instance.PlayCombatSounds(0);
+        AudioManager.instance.PlayCombatSounds(9);//CAMBIAR SONIDO
 
         if (inventoryGh != null)
         {

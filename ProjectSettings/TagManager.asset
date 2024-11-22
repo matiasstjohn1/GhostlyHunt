@@ -21,6 +21,7 @@ TagManager:
   - GhSelector
   - Boss
   - BossMap
+  - Canvas
   layers:
   - Default
   - TransparentFX
@@ -33,21 +34,21 @@ TagManager:
   - map
   - NewZone
   - hit
-  - Boof
-  - sacar
-  - Bola de fuego
   - BackZone
-  - Cinematica
-  - Bloqueo
-  - HitDebil
-  - Sword
-  - "parar da\xF1o"
-  - veneno
-  - TP
-  - NewAttack
-  - DestruirBolas
-  - jefe final
-  - AFUERA
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

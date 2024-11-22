@@ -5,14 +5,32 @@ using UnityEngine;
 public enum AttackEnum 
 {
     //Tipos basicos 1//
-    Firy, 
-    Ruion, 
-    Kronk, 
-    Chork, 
+    Firy, //Rojo 
+    Ruion, //Violeta
+    Kronk, //Mixto
+    Chork, //Negro
 
-    //Tipo basicos 2//
-    Lopin,
+    //Tipo basicos 2 cementerio medio//
+    Kloir,
     Wluil, 
     Manue, 
-    Lik, 
+    Mago,
+
+    //Tipo carne//
+    Crank, //Chico
+    Cronk, //Chico
+    Brank, //Grande
+    Bronk, //Grande
+
+    //Tipo esqueleto//
+    Kelon, //Chico
+    Seklok, //Chico
+    Tkerlon, //Grande
+    Tseklok, //Grande
+
+    //Extras//
+    Valtrar,
+    Molgrar,
+    Nuntrar,
+    Asmuos
 }

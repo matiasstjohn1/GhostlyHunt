@@ -56,9 +56,9 @@ public class Unit : MonoBehaviour
 			nameIndex = spawnerComponent.nameIndex;
 		}
 
-		randomLvl = Random.Range(10, 101);
-		randomDamage = Random.Range(10, 51);
-		randomMaxHP = Random.Range(100, 1001);
+		randomLvl = Random.Range(10, 81);
+		randomDamage = Random.Range(10, 81);
+		randomMaxHP = Random.Range(100, 801);
 		currentHP = randomMaxHP;
 	}
 

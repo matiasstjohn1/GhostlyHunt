@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2652571600280756014}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.63, y: 1.74, z: 0}
   m_LocalScale: {x: 0.17105372, y: 0.17105372, z: 0.17105372}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2652571600967537167}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2652571600967537270
 GameObject:
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2652571600967537156}
   - component: {fileID: 2652571600967537157}
   - component: {fileID: 2652571600967537160}
-  - component: {fileID: -4318391325899473930}
+  - component: {fileID: -6691410434833809757}
   m_Layer: 0
   m_Name: Npc
   m_TagString: Untagged
@@ -58,6 +58,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2652571600967537270}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -21.21, y: 13.28, z: 0}
   m_LocalScale: {x: 4.769561, y: 4.769561, z: 4.769561}
@@ -65,7 +66,6 @@ Transform:
   m_Children:
   - {fileID: 2652571600280756009}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2652571600967537156
 SpriteRenderer:
@@ -129,6 +129,25 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -165,7 +184,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &-4318391325899473930
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-6691410434833809757
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,10 +194,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2652571600967537270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 834c81f78e0a04b4c8271ff959a917df, type: 3}
+  m_Script: {fileID: 11500000, guid: 915745fc823540e4a96736889ab42e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Collect: {fileID: 0}
+  dialogue:
+    nameNpc: 
+    icon: {fileID: 0}
+    sentences: []
   Interaccion: {fileID: 0}
   z_Filter:
     useTriggers: 0
@@ -188,12 +211,11 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 8
+      m_Bits: 16
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  lecturas: []
-  currentTime: 0
   p: 0
   seActivo: 0
+  unlockIndex: 0

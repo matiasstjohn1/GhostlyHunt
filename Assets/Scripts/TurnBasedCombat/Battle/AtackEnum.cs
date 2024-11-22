@@ -6,5 +6,8 @@ using UnityEngine;
 public enum AtackEnum 
 {
     AttackSP,
-    AttackNorm
+    AttackNorm,
+    Heal,
+    Corrupt,
+    Destroy,
 }

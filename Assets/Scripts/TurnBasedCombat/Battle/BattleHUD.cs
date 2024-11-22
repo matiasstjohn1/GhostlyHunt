@@ -19,16 +19,16 @@ public class BattleHUD : MonoBehaviour
 	{
 		_unit = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Unit>();
 		nameText.text = unit.unitName[unit.nameIndex];
-		levelText.text = "Lvl: " + unit.randomLvl; //Nivel enemy.
-		damageText.text = "Damage: " + unit.randomDamage; //Daño enemy
+		levelText.text = "" + unit.randomLvl; //Nivel enemy.
+		damageText.text = "" + unit.randomDamage; //Daño enemy
 	}
 
 	public void SetBossHUD(UnitBoss unit)
 	{
 		_boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<UnitBoss>();
 		nameText.text = unit.unitName;
-		levelText.text = "Lvl: " + unit.Lvl; //Nivel enemy.
-		damageText.text = "Damage: " + unit.Damage; //Daño enemy
+		levelText.text = "" + unit.Lvl; //Nivel enemy.
+		damageText.text = "" + unit.Damage; //Daño enemy
 	}
 
 	private void Update()
@@ -37,13 +37,13 @@ public class BattleHUD : MonoBehaviour
 		{
 			nameText.text = _boss.unitName;
 			hpSlider.fillAmount = _boss.currentHP / _boss.MaxHP;
-			HP.text = "HP: " + (int)_boss.currentHP;
+			HP.text = "" + (int)_boss.currentHP;
 		}
 		if (_unit != null)
 		{
 			nameText.text = _unit.unitName[_unit.nameIndex];
 			hpSlider.fillAmount = _unit.currentHP / _unit.randomMaxHP;
-			HP.text = "HP: " + (int)_unit.currentHP;
+			HP.text = "" + (int)_unit.currentHP;
 		}
 	}
 

@@ -24,7 +24,6 @@ public class GhController : MonoBehaviour
     public void colocarInv()
     {
         Debug.Log("Index:" + unit.nameIndex);
-        AudioManager.instance.PlayCombatSounds(5);
         GameObject[] inventario = GameObject.FindGameObjectWithTag("InventarioM").GetComponent<InventoryGh>().getSlots();
 
 
@@ -36,15 +35,16 @@ public class GhController : MonoBehaviour
             {
                 Debug.Log("paso1");
                 GameObject.FindGameObjectWithTag("InventarioM").GetComponent<InventoryGh>().setSlots(obj[unit.nameIndex], i, cant, GhID);
-                    //Destroy(gameObject);
-                    break;
+                UnlocksManager.instance.UnlockByIndex(unit.nameIndex);
+                //Destroy(gameObject);
+                break;
             }
             else if (inventario[i].GetComponent<Ghostlymanager>().getID() == GhID)
             {
                 Debug.Log("paso2");
                 GameObject.FindGameObjectWithTag("InventarioM").GetComponent<InventoryGh>().setSlots(obj[unit.nameIndex], i, cant, GhID);
-                    //Destroy(gameObject);
-                    break;
+                UnlocksManager.instance.UnlockByIndex(unit.nameIndex);
+                break;
             }
 
         }

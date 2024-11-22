@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Movement_Main : MonoBehaviour
@@ -46,15 +45,6 @@ public class Movement_Main : MonoBehaviour
         currentTime += Time.deltaTime;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //Escena de victoria
-        if (collision.gameObject.layer == 9)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-    }
-
     private void FixedUpdate()
     {
         myRb.MovePosition(myRb.position + direccion * velocidadMovimiento * Time.fixedDeltaTime);
@@ -62,6 +52,9 @@ public class Movement_Main : MonoBehaviour
 
     public void SaveStat()
     {
-        velmovsave = velocidadMovimiento;
+        if (velocidadMovimiento != 0)
+        {
+            velmovsave = velocidadMovimiento;
+        }
     }
 }

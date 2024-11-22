@@ -113,7 +113,7 @@ TextureImporter:
       name: mago_pro2_0
       rect:
         serializedVersion: 2
-        x: 10
+        x: 40
         y: 0
         width: 270
         height: 320
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97736e09175ad4f45a91ae9fcc40252c
-      internalID: -873090911
+      spriteID: fb0d32735f36adc429e0efc4399d156e
+      internalID: -981875585
       vertices: []
       indices: 
       edges: []
@@ -134,7 +134,7 @@ TextureImporter:
       name: mago_pro2_1
       rect:
         serializedVersion: 2
-        x: 340
+        x: 360
         y: 0
         width: 260
         height: 320
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b24ce9698a0e7a04ead06770f1353230
-      internalID: 1124762990
+      spriteID: fef6a9644f24b554199b97840807f0cb
+      internalID: 837227954
       vertices: []
       indices: 
       edges: []
@@ -155,7 +155,7 @@ TextureImporter:
       name: mago_pro2_2
       rect:
         serializedVersion: 2
-        x: 660
+        x: 680
         y: 0
         width: 260
         height: 310
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fbb7b7751ac3ac4b896c2d2bd714595
-      internalID: -1705710875
+      spriteID: e2c465b058fcffd4984271a6353c9e70
+      internalID: -763616523
       vertices: []
       indices: 
       edges: []
@@ -176,7 +176,7 @@ TextureImporter:
       name: mago_pro2_3
       rect:
         serializedVersion: 2
-        x: 980
+        x: 1000
         y: 0
         width: 260
         height: 310
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3dab246c91c516246b184ccf3b9a831d
-      internalID: 1235163603
+      spriteID: 51431dd2f6b91dd458edd9a1c8b9d914
+      internalID: -897505269
       vertices: []
       indices: 
       edges: []
@@ -197,7 +197,7 @@ TextureImporter:
       name: mago_pro2_4
       rect:
         serializedVersion: 2
-        x: 1300
+        x: 1320
         y: 0
         width: 260
         height: 320
@@ -208,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92f02863452d8e34ca74d56536248c9b
-      internalID: -614667634
+      spriteID: f1f681b73771c5f4fb83d05494202d98
+      internalID: -1080295142
       vertices: []
       indices: 
       edges: []
@@ -218,7 +218,7 @@ TextureImporter:
       name: mago_pro2_5
       rect:
         serializedVersion: 2
-        x: 1610
+        x: 1640
         y: 0
         width: 270
         height: 320
@@ -229,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bebe7722b1aee1a4585c14488581bf59
-      internalID: 508436277
+      spriteID: b12addeb5c0da7f4ebf465bd578cf6f5
+      internalID: 1782666633
       vertices: []
       indices: 
       edges: []
@@ -246,12 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      mago_pro2_0: -873090911
-      mago_pro2_1: 1124762990
-      mago_pro2_2: -1705710875
-      mago_pro2_3: 1235163603
-      mago_pro2_4: -614667634
-      mago_pro2_5: 508436277
+      mago_pro2_0: -981875585
+      mago_pro2_1: 837227954
+      mago_pro2_2: -763616523
+      mago_pro2_3: -897505269
+      mago_pro2_4: -1080295142
+      mago_pro2_5: 1782666633
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
