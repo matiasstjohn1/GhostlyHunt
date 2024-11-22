@@ -43,6 +43,7 @@ public class BattleSystem : MonoBehaviour
 	public GameObject LapidaPanel1;
 	public GameObject LapidaPanel2;
 	public GameObject onBackChar;
+	public GameObject usePotion;
 
 	[Header("Calls de turnos")]
 	public int index;
@@ -691,16 +692,31 @@ public class BattleSystem : MonoBehaviour
 
 	public IEnumerator PlayerHeal(int amount)
 	{
-		playerUnit.Heal(amount);
-		AudioManager.instance.PlayCombatSounds(3);
-		playerHUD.SetHP(playerUnit.currentHP);
-		dialogueText.text = "¡Te has curado!";
-		GameObject.FindGameObjectWithTag("InventarioM").GetComponent<InventroyManager>().showInventory();
-		dialogueText.text = "¡Elige tu siguiente accion!";
-		yield return new WaitForSeconds(1f);
-	}
+		if (playerUnit != null)
+		{
+			playerUnit.Heal(amount);
+			AudioManager.instance.PlayCombatSounds(3);
+			playerHUD.SetHP(playerUnit.currentHP);
+			dialogueText.text = "¡Te has curado!";
+			GameObject.FindGameObjectWithTag("InventarioM").GetComponent<InventroyManager>().showInventory();
+			dialogueText.text = "¡Elige tu siguiente accion!";
+			yield return new WaitForSeconds(1f);
+		}
+		if (playerUnit == null)
+		{
+			usePotion.SetActive(true);
+            StartCoroutine(Deactivatetext());
 
-	public IEnumerator PlayerEscape()
+        } 
+
+	}
+	public IEnumerator Deactivatetext()
+	{
+        yield return new WaitForSeconds(3f);
+        usePotion.SetActive(false);
+    }
+
+        public IEnumerator PlayerEscape()
 	{
 		foreach (GameObject _spawner in _spawner)
 		{
