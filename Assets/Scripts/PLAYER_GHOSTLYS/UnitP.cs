@@ -12,12 +12,11 @@ public class UnitP : MonoBehaviour
     public List<string> unitName;
 
     public float currentHP;
-    public int nameindex;
 
     private void Start()
     {
         image = GetComponent<Image>();
-        currentHP = StatsManager.Instance._maxHP;
+        currentHP = StatsManager.Instance.currentHealth;
     }
 
     private void Update()
@@ -27,6 +26,19 @@ public class UnitP : MonoBehaviour
 
     public bool TakeDamage(int dmg)
     {
+        if ((GameManager.Instance.pj) == 0)
+        {
+            StatsSave.Instance.currentHealth1 -= dmg;
+        }
+        if ((GameManager.Instance.pj) == 1)
+        {
+            StatsSave.Instance.currentHealth2 -= dmg;
+        }
+        if ((GameManager.Instance.pj) == 2)
+        {
+            StatsSave.Instance.currentHealth3 -= dmg;
+        }
+
         currentHP -= dmg;
 
         if (currentHP <= 0)
@@ -37,6 +49,18 @@ public class UnitP : MonoBehaviour
 
     public void Heal(int amount)
     {
+        if ((GameManager.Instance.pj) == 0)
+        {
+            StatsSave.Instance.currentHealth1 += amount;
+        }
+        if ((GameManager.Instance.pj) == 1)
+        {
+            StatsSave.Instance.currentHealth2 += amount;
+        }
+        if ((GameManager.Instance.pj) == 2)
+        {
+            StatsSave.Instance.currentHealth3 += amount;
+        }
         currentHP += amount;
         if (currentHP > StatsManager.Instance._maxHP)
             currentHP = StatsManager.Instance._maxHP;

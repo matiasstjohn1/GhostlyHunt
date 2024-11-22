@@ -7,7 +7,6 @@ public class UnitBoss : MonoBehaviour
 {
 	//Cambiar personaje
 	private Image image;
-	public Sprite sprites;
 
 	public string unitName;
 
@@ -20,9 +19,6 @@ public class UnitBoss : MonoBehaviour
 
 	private void Awake()
 	{
-		Lvl = 80;
-		Damage = 35;
-		MaxHP = 1000;
 		currentHP = MaxHP;
 	}
 

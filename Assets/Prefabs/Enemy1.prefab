@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.2764, y: -401}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.000032425, y: -360}
+  m_SizeDelta: {x: 89.5863, y: 89.5863}
   m_Pivot: {x: 0.5, y: -1}
 --- !u!222 &1737724011570861472
 CanvasRenderer:
@@ -67,8 +67,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7a13e6e34bbf3024e817abe2d97aadc7, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -90,21 +90,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: -726491998, guid: 3679b1e0ad28f2047b616f6f64fde9c0, type: 3}
-  - {fileID: 214659783, guid: 78658adf9cb8e274d84d11f611505672, type: 3}
-  - {fileID: 229827398, guid: 2d7341273133fec428a952bc8e6db063, type: 3}
-  - {fileID: -34324713, guid: 9da978ba617f8284fa3747956eb3b087, type: 3}
-  - {fileID: 21300000, guid: 5dadbd7199ad3f643a9124bf2cb3000a, type: 3}
-  - {fileID: 21300000, guid: 48ac24150a15c104882b915c983e4883, type: 3}
-  - {fileID: 21300000, guid: 3c8381898b7cb4648abe9de2dab79164, type: 3}
+  - {fileID: 21300000, guid: ed283431f0d4f2b418701e6addb0e107, type: 3}
+  - {fileID: 21300000, guid: 1594cf239e49cd8469fcec7e7f235b7d, type: 3}
+  - {fileID: 21300000, guid: 0409f24ccf282f3459ba2b569bc61d9d, type: 3}
+  - {fileID: 21300000, guid: 9a8712125c5bafc4b844b37e7e6d401c, type: 3}
+  - {fileID: 21300000, guid: ceb79bd1f342b144082f736700c56378, type: 3}
+  - {fileID: 21300000, guid: be3b13bf150545740b950a04a7c7b328, type: 3}
+  - {fileID: 21300000, guid: d287d9ec6ba53ac4696cdf7e3ee1af86, type: 3}
+  - {fileID: -981875585, guid: b2de4fd15ff01ea45b1ba4cbce0d3a02, type: 3}
+  - {fileID: 21300000, guid: 2a049299035aad1468e19d5ed47492a5, type: 3}
+  - {fileID: 21300000, guid: e38d310fe06f8934f8213fdfb95b4802, type: 3}
+  - {fileID: 21300000, guid: a0a0757cc94aa3840a4875c46b9d5d49, type: 3}
+  - {fileID: 21300000, guid: bf0b8d9e616f4d141802ae7332f0b585, type: 3}
+  - {fileID: 21300000, guid: 7eb6e3af057d04845bca581bb543d852, type: 3}
+  - {fileID: 21300000, guid: 5dd0cedd566cacc47a9a1d9844dafc8c, type: 3}
+  - {fileID: 21300000, guid: 4464982eedb2b60449a3da24e3ed4a94, type: 3}
+  - {fileID: 21300000, guid: 1a4fbd367712d834aa12119e47f30d1e, type: 3}
+  - {fileID: 21300000, guid: f4f9827b28d035149984f429ca6b6d73, type: 3}
+  - {fileID: 21300000, guid: ae242839cc2b84741a47c1f0787d6b01, type: 3}
+  - {fileID: 21300000, guid: 32149f11b0af4414f9aac327d6c04709, type: 3}
+  - {fileID: 21300000, guid: 644658485cba9364f88676615451c026, type: 3}
   unitName:
   - Firy
   - Ruion
   - Kronk
   - Chork
-  - Lopin
+  - Kloir
   - Wluil
   - Manue
+  - Mago
+  - Crank
+  - Cronk
+  - Brank
+  - Bronk
+  - Kelon
+  - Seklok
+  - Tkerlon
+  - Tseklok
+  - Valtrar
+  - Molgrar
+  - Nuntrar
+  - Asmuos
   currentHP: 0
   _spawner:
   - {fileID: 0}
@@ -133,5 +159,18 @@ MonoBehaviour:
   - {fileID: 8359565705699514894, guid: 7d9e5b2738f4854429a30844b66e3cab, type: 3}
   - {fileID: 8359565705699514894, guid: 0dc13eddec364cf409415cc3226558f9, type: 3}
   - {fileID: 8359565705699514894, guid: 24ef6bc04f1e92a459674d488a579062, type: 3}
+  - {fileID: 8359565705699514894, guid: eed8dfe0b1bca224ba775df120c2add3, type: 3}
+  - {fileID: 8359565705699514894, guid: 57bae4fa5c8e90d4fa070741add1e0f6, type: 3}
+  - {fileID: 8359565705699514894, guid: fed9c513e72dc074882920fe4a9b3193, type: 3}
+  - {fileID: 8359565705699514894, guid: 427a3293c42f944469748096c6421083, type: 3}
+  - {fileID: 8359565705699514894, guid: 630c6c695203f5e44b9beba51ab2363f, type: 3}
+  - {fileID: 8359565705699514894, guid: e7229cb87059dcc47865b23d441e72ce, type: 3}
+  - {fileID: 8359565705699514894, guid: 823391ab86ac6b8409600f828c4faa93, type: 3}
+  - {fileID: 8359565705699514894, guid: 903045bac72a3c64bac879ba82c75ff0, type: 3}
+  - {fileID: 8359565705699514894, guid: 3ac84f5dc5ea41745b3698e2b01c71c1, type: 3}
+  - {fileID: 8359565705699514894, guid: af242f5c8cfa8d441b87ef8bc3c1ecba, type: 3}
+  - {fileID: 8359565705699514894, guid: b7e697c4f2f012f42a64e572a9a585bd, type: 3}
+  - {fileID: 8359565705699514894, guid: 29679a65fa01ccf43b71a60c32d9c6d7, type: 3}
+  - {fileID: 8359565705699514894, guid: 29679a65fa01ccf43b71a60c32d9c6d7, type: 3}
   cant: 1
   GhID: 0

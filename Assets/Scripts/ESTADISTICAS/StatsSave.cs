@@ -14,7 +14,7 @@ public class StatsSave : MonoBehaviour
     public int _lvl0; //Nivel a guardar.
     public int _xp0; //Xp a guardar.
     public int stamina0; //Stamina a guardar
-
+    
     //Vars personaje 1. Firy//
     public int _nameIndex1;
     public int _damage1; //Daño de la unidad.
@@ -22,6 +22,7 @@ public class StatsSave : MonoBehaviour
     public int _lvl1; //Nivel a guardar.
     public int _xp1; //Xp a guardar.
     public int stamina1; //Stamina a guardar
+    public float currentHealth1;
 
     //Vars personaje 2. Aquafina//
     public int _nameIndex2;
@@ -30,6 +31,7 @@ public class StatsSave : MonoBehaviour
     public int _lvl2; //Nivel a guardar.
     public int _xp2; //Xp a guardar.
     public int stamina2; //Stamina a guardar
+    public float currentHealth2;
 
     //Vars personaje 3. Kronk//
     public int _nameIndex3;
@@ -38,6 +40,7 @@ public class StatsSave : MonoBehaviour
     public int _lvl3; //Nivel a guardar.
     public int _xp3; //Xp a guardar.
     public int stamina3; //Stamina a guardar
+    public float currentHealth3;
 
     public int cleanSlotId;//Detecta ID del inv Ghostly paara saber qn borrar.
 

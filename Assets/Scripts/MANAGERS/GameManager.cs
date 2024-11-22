@@ -13,9 +13,7 @@ public class GameManager : MonoBehaviour
     public float points = 0; //Texto de puntos
     public int pj; //Player a seleccion
     public GameObject inv; //Inventario player
-    public GameObject invItems; //Inventario player
-    public GameObject invGhostlys; //Inventario player
-    public GameObject fondoInvs; //Inventario player
+
     public bool invActivo = true;
     public GameObject Final;
     public int bossCount = 0;
@@ -72,6 +70,8 @@ public class GameManager : MonoBehaviour
             Final.SetActive(false);
         }
         ///////////////////////////////////////////
+        
+        ExitGame();
     }
 
     public void CharacterPassAway()
@@ -82,5 +82,13 @@ public class GameManager : MonoBehaviour
     public void ActualizarObjetivo5()
     {
        obvText5.text = "Mata a los jefes=" + bossCount + "/2";
+    }
+    public void ExitGame()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            AudioManager.instance.StopSounds();
+            SceneManager.LoadScene(0);
+        }
     }
 }

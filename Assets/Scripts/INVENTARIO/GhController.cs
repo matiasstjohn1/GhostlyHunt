@@ -35,15 +35,16 @@ public class GhController : MonoBehaviour
             {
                 Debug.Log("paso1");
                 GameObject.FindGameObjectWithTag("InventarioM").GetComponent<InventoryGh>().setSlots(obj[unit.nameIndex], i, cant, GhID);
-                    //Destroy(gameObject);
-                    break;
+                UnlocksManager.instance.UnlockByIndex(unit.nameIndex);
+                //Destroy(gameObject);
+                break;
             }
             else if (inventario[i].GetComponent<Ghostlymanager>().getID() == GhID)
             {
                 Debug.Log("paso2");
                 GameObject.FindGameObjectWithTag("InventarioM").GetComponent<InventoryGh>().setSlots(obj[unit.nameIndex], i, cant, GhID);
-                    //Destroy(gameObject);
-                    break;
+                UnlocksManager.instance.UnlockByIndex(unit.nameIndex);
+                break;
             }
 
         }

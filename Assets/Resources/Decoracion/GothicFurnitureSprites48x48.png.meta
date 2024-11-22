@@ -1,0 +1,1449 @@
+fileFormatVersion: 2
+guid: 85e8ca114c035be41b4e057f7f21d2a0
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 674
+        width: 42
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a84708ea5e3bc144aa97879e9b2790f
+      internalID: 1306748901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 672
+        width: 192
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93b2522475b47184c892d0f2af1f4983
+      internalID: -359335756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_2
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 604
+        width: 37
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fc13b4e6b36752429a196b9c48d8b32
+      internalID: -212034924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_3
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 606
+        width: 37
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b23db69e4f2925b4ea46a6787fb7a702
+      internalID: -340479606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_4
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 604
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9de74025a3bc360498fc835fbe214f09
+      internalID: -43613031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_5
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 606
+        width: 37
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6784ea13ab8cff54b88358ef226682cd
+      internalID: 1067079761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_6
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 604
+        width: 39
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9ed94ebdaf01af478a745e2e1dbaed7
+      internalID: -1985997065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_7
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 606
+        width: 37
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffe7106c821d4544f87f9327bcc40b40
+      internalID: -1692090981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_8
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 606
+        width: 37
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f43b28d268d71e4989acdaebfc25294
+      internalID: 150337120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_9
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 604
+        width: 36
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53621ba64eec6ab4c8df227feeb1232e
+      internalID: 346174551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_10
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 576
+        width: 48
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c22af536b68f804d951e55a842c4d0b
+      internalID: -2106575671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_11
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 482
+        width: 89
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a9350c42c34a5f47a88956ad0c046c4
+      internalID: -1847669651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_12
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 482
+        width: 89
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c464274e0ac0d184cb0dd4e6c76e7079
+      internalID: 2060733772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_13
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 385
+        width: 58
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a8eb8f2916b2c342b3bdbc88e6bd3d0
+      internalID: -1241331431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_14
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 480
+        width: 49
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcdf445923b4f9a42b3ed2bcaf452d14
+      internalID: -1095254989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 336
+        width: 97
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52bb423beb682cf4e86aeeb7965f21e7
+      internalID: -1510383536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_16
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 301
+        width: 80
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a60d465544a2704db2170e1170714c7
+      internalID: -370940107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_17
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 385
+        width: 92
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc2bf971cf6e91d4e811883236bad91a
+      internalID: 1034352496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_18
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 336
+        width: 26
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 953620dc4aad16f46bbd8885172578d5
+      internalID: -1781075282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 47
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df91a956db6c5414aafa4c8d1bec22fc
+      internalID: -1816887913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_20
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 336
+        width: 26
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06edcb87310e61944aff13ba5a06b934
+      internalID: -1896832014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_21
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 336
+        width: 32
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42fec77d353251041850db1a05aefafa
+      internalID: 549045058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_22
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 338
+        width: 41
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7a08831c238dde40a2583ec76e326b7
+      internalID: -866401241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_23
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 346
+        width: 9
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69b20dc8203db254a8c6b231d95e7e9e
+      internalID: 2135193267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_24
+      rect:
+        serializedVersion: 2
+        x: 739
+        y: 296
+        width: 9
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dade3ed12c4142f449047d2457901506
+      internalID: 1977054378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_25
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 192
+        width: 90
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21e0234b9e3cca34d8c8931ad6d50ab4
+      internalID: 1644652111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_26
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 244
+        width: 94
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e525fdd5e593124d85a74addbddf9c8
+      internalID: -1753410972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_27
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 208
+        width: 71
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1e7cea5bc0046944b1ee6905d26a675
+      internalID: -1539121933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_28
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 168
+        width: 38
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8121abdf23bc9ee43a485b7541428810
+      internalID: 522168889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_29
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 192
+        width: 66
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ebadea36806826479a3e65acba0e26c
+      internalID: -1627999069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_30
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 196
+        width: 34
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09197ac384a2f874686bed535b3f53c6
+      internalID: -1112120301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_31
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 98
+        width: 104
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fb886409b74c644fb91c1ca2d6ef2aa
+      internalID: 451521434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_33
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 99
+        width: 34
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ffb6ac26c5cfe942a0c7983d639b311
+      internalID: 1198005388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_34
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 99
+        width: 34
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82b528d9251fc5947b199bb85cbeedd7
+      internalID: -2005009244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_35
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 99
+        width: 34
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 331ff56f45756c947ac5635a4c2ed895
+      internalID: 76388228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_36
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 99
+        width: 34
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b2b0f3010dfbf24dbd0027376e87593
+      internalID: 1846738162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_37
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 99
+        width: 34
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73bc2f2f570cd4e478c74a19c6e6ce50
+      internalID: 628133825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_38
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 150
+        width: 86
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a23d7c235b2977344a50f399a37c3abe
+      internalID: -641968647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_39
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 152
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d987c90a9948f164485058a9e4deabfe
+      internalID: 1133489626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_40
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 142
+        width: 40
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47a32c50a7577274c8329d8a06775885
+      internalID: -1593035934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_41
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 99
+        width: 41
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6df8dad4a2cdde4428c99b1c4f9725db
+      internalID: 873055578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_42
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 180
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5a4741597b21ba439d3d90ab3bfcc97
+      internalID: 1234313030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_43
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 3
+        width: 129
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45753dd9c4349804db81c7581cf404bd
+      internalID: 1519661968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_44
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 4
+        width: 40
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d59c7e58599fda408215780bbfc144f
+      internalID: -417444464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_45
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 100
+        width: 46
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce9be30e2682a064c831753c1ac36bb9
+      internalID: -1282652509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_46
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 112
+        width: 40
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b19110100733924882b082fb83f0c63
+      internalID: -1758608752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_47
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 97
+        width: 39
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3927eeb35f665e7409d477aa0dce4b2d
+      internalID: -1129675310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 54
+        width: 145
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebe726a4f83c790448b044acdd5ba6e6
+      internalID: -2081654144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_49
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 12
+        width: 47
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd04f1832d86c0944a3f30a6dce3d132
+      internalID: -1922977150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_50
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 12
+        width: 47
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edcb7a120cb229d45856305d52525cc9
+      internalID: 682891882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_51
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 12
+        width: 47
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16fc875a35c081549856d3ef561211ee
+      internalID: 914633222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_52
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 54
+        width: 22
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 787c0868f81cdbe4f89cf9884124dedc
+      internalID: -225989029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_54
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 14
+        width: 48
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed942ad8a0aa907478505da8b79f6101
+      internalID: -256735388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6
+        width: 144
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8b542b9b385c624e9c11a5a7dae9d75
+      internalID: 2050836982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_56
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 16
+        width: 8
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09f945354c84aaa4c8568de151e59ef8
+      internalID: -1185003395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_57
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 16
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be332c2133375924fa0a31be7e99b56c
+      internalID: -1308028096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_58
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 2
+        width: 30
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3883a71fabc2a7a41bc2ed26adc6d3c4
+      internalID: 2044880114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_59
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 6
+        width: 22
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13b2fe8cb677c774c9d138b255180ef4
+      internalID: 1447075407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_60
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 192
+        width: 48
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5514528b78f45734ea89807ce0522ce2
+      internalID: 2009485630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GothicFurnitureSprites48x48_61
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 152
+        width: 21
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35ddd7debb623834ea1bca8af2f92c6b
+      internalID: 1612074661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      GothicFurnitureSprites48x48_0: 1306748901
+      GothicFurnitureSprites48x48_1: -359335756
+      GothicFurnitureSprites48x48_10: -2106575671
+      GothicFurnitureSprites48x48_11: -1847669651
+      GothicFurnitureSprites48x48_12: 2060733772
+      GothicFurnitureSprites48x48_13: -1241331431
+      GothicFurnitureSprites48x48_14: -1095254989
+      GothicFurnitureSprites48x48_15: -1510383536
+      GothicFurnitureSprites48x48_16: -370940107
+      GothicFurnitureSprites48x48_17: 1034352496
+      GothicFurnitureSprites48x48_18: -1781075282
+      GothicFurnitureSprites48x48_19: -1816887913
+      GothicFurnitureSprites48x48_2: -212034924
+      GothicFurnitureSprites48x48_20: -1896832014
+      GothicFurnitureSprites48x48_21: 549045058
+      GothicFurnitureSprites48x48_22: -866401241
+      GothicFurnitureSprites48x48_23: 2135193267
+      GothicFurnitureSprites48x48_24: 1977054378
+      GothicFurnitureSprites48x48_25: 1644652111
+      GothicFurnitureSprites48x48_26: -1753410972
+      GothicFurnitureSprites48x48_27: -1539121933
+      GothicFurnitureSprites48x48_28: 522168889
+      GothicFurnitureSprites48x48_29: -1627999069
+      GothicFurnitureSprites48x48_3: -340479606
+      GothicFurnitureSprites48x48_30: -1112120301
+      GothicFurnitureSprites48x48_31: 451521434
+      GothicFurnitureSprites48x48_32: -1670903281
+      GothicFurnitureSprites48x48_33: 1198005388
+      GothicFurnitureSprites48x48_34: -2005009244
+      GothicFurnitureSprites48x48_35: 76388228
+      GothicFurnitureSprites48x48_36: 1846738162
+      GothicFurnitureSprites48x48_37: 628133825
+      GothicFurnitureSprites48x48_38: -641968647
+      GothicFurnitureSprites48x48_39: 1133489626
+      GothicFurnitureSprites48x48_4: -43613031
+      GothicFurnitureSprites48x48_40: -1593035934
+      GothicFurnitureSprites48x48_41: 873055578
+      GothicFurnitureSprites48x48_42: 1234313030
+      GothicFurnitureSprites48x48_43: 1519661968
+      GothicFurnitureSprites48x48_44: -417444464
+      GothicFurnitureSprites48x48_45: -1282652509
+      GothicFurnitureSprites48x48_46: -1758608752
+      GothicFurnitureSprites48x48_47: -1129675310
+      GothicFurnitureSprites48x48_48: -2081654144
+      GothicFurnitureSprites48x48_49: -1922977150
+      GothicFurnitureSprites48x48_5: 1067079761
+      GothicFurnitureSprites48x48_50: 682891882
+      GothicFurnitureSprites48x48_51: 914633222
+      GothicFurnitureSprites48x48_52: -225989029
+      GothicFurnitureSprites48x48_53: 732479925
+      GothicFurnitureSprites48x48_54: -256735388
+      GothicFurnitureSprites48x48_55: 2050836982
+      GothicFurnitureSprites48x48_56: -1185003395
+      GothicFurnitureSprites48x48_57: -1308028096
+      GothicFurnitureSprites48x48_58: 2044880114
+      GothicFurnitureSprites48x48_59: 1447075407
+      GothicFurnitureSprites48x48_6: -1985997065
+      GothicFurnitureSprites48x48_60: 2009485630
+      GothicFurnitureSprites48x48_61: 1612074661
+      GothicFurnitureSprites48x48_7: -1692090981
+      GothicFurnitureSprites48x48_8: 150337120
+      GothicFurnitureSprites48x48_9: 346174551
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

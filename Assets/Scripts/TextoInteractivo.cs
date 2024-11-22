@@ -8,7 +8,7 @@ public class TextoInteractivo : MonoBehaviour
     //Variables de textos
     public GameObject dialogCanvas; // Referencia al objeto de Canvas que contiene el componente de texto
     public Text dialogText; // Referencia al componente de texto en el Canvas
-    private bool isInRange = false;
+    public string texto;
 
     private void Start()
     {
@@ -16,17 +16,23 @@ public class TextoInteractivo : MonoBehaviour
     }
 
     //Segun la colision activa el dialogo.
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             ShowDialog();
         }
     }
-
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            dialogCanvas.SetActive(false);
+        }
+    }
     private void ShowDialog()
     {
         dialogCanvas.SetActive(true); // Activamos el Canvas
-        dialogText.text = ""; // Actualizamos el texto del Canvas
+        dialogText.text = texto; // Actualizamos el texto del Canvas
     }
 }

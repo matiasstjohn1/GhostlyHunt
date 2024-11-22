@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AttributesItems : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class AttributesItems : MonoBehaviour
     private InventroyManager inventoryManager;
     private BattleSystem battleSystem;
 
+    [Header("Info Item")]
+    public GameObject prefabInfo;
+    public Text textInfo;
+    [SerializeField] string itemDescription;
+
     private void Start()
     {
         GameObject inventory = GameObject.FindGameObjectWithTag("InventarioM");
@@ -20,6 +26,16 @@ public class AttributesItems : MonoBehaviour
             inventoryManager = inventory.GetComponent<InventroyManager>();
         }
         battleSystem = GameObject.FindGameObjectWithTag("Battle").GetComponent<BattleSystem>();
+
+        GameObject canvas = GameObject.Find("Canvas");
+        if (canvas != null)
+        {
+            prefabInfo = canvas.transform.Find("INVTEXTINFO").gameObject; // Cambia "NombreDelPrefabInfo" al nombre real de prefabInfo
+            if (prefabInfo != null)
+            {
+                textInfo = prefabInfo.GetComponentInChildren<Text>();
+            }
+        }
     }
 
     public void ActiveItem()
@@ -45,6 +61,16 @@ public class AttributesItems : MonoBehaviour
         if (inventoryManager != null)
         {
             inventoryManager.removeItems(itemID);
+            inventoryManager.fullInv = false;
+        }
+    }
+    public void ActiveInfo()
+    {
+        //AudioManager.instance.PlayCombatSounds(7);
+        prefabInfo.SetActive(true);
+        if (textInfo != null)
+        {
+            textInfo.text = itemDescription;
         }
     }
 

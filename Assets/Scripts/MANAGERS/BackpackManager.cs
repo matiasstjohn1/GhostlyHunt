@@ -7,30 +7,36 @@ using UnityEngine.UI;
 public class BackpackManager : MonoBehaviour
 {
     public static BackpackManager Instance;
-
+    [Header("BOTONES")]
     public GameObject botonItems; 
     public GameObject botonGhostly; //Boton Ghostlys
     public GameObject botonX; //Boton X
     public GameObject botonX2; //Boton X2
+    public GameObject botonX3; //Boton X3
     public GameObject botonObjetivos; //Boton objetivos (provisional)
+    [Header("FONDOS Y OBJETIVOS")]
     public GameObject fondoMochila; //Mochila fondo
     public GameObject objectives; //Objetivos
 
     //Inventario Items//.
     public GameObject fondoItems;
+    [Header("SLOTS DE INVS")]
     public GameObject slotsItems;
+    public GameObject itemInfo;
 
     //Inventario Ghostly//.
     public GameObject slotsGh;
 
+    [Header("SECCION DIARIO")]
     //Diario//
     public GameObject diarioGeneral;
-    public GameObject diarioGhostlys;
     //Botones diario//
-    public GameObject diarioItems;
-    public GameObject diarioNpcs;
+    public GameObject tapa;
+
+    [Header("CATEGORIAS DIARIO")]
     //Categorias//
     public GameObject categoryGhostlys;
+    public GameObject categoryGhostly2;
     public GameObject categoryItems;
     public GameObject categoryNpcs;
 
@@ -39,16 +45,17 @@ public class BackpackManager : MonoBehaviour
     public bool activeMapa = true;
     public bool activeBack = true;
 
+    [Header("SECCION DIARIO ITEMS")]
     //Diario paginas items//
     public GameObject flecha; //Boton siguiente
     public GameObject flechaBack; //Boton atras
-    public GameObject categoryItems2;
-
+    [Header("SECCION DIARIO NPCS")]
     //Dirario paginas Npcs//
     public GameObject flechaNpc; //Boton siguiente
     public GameObject flechaBackNpc; //Boton atras
     public GameObject categoryNpcs2;
 
+    [Header("CAMBIOS GHOSTLYS")]
     //Para elegir ghostly//
     public GameObject botonesGhostly;
     public int A = 0;
@@ -78,6 +85,7 @@ public class BackpackManager : MonoBehaviour
         objectives.SetActive(false);
         diarioGeneral.SetActive(false);
         botonX2.SetActive(false);
+        botonX3.SetActive(false);
         A = 0;
         botonesGhostly.SetActive(false);
         
@@ -92,18 +100,21 @@ public class BackpackManager : MonoBehaviour
         objectives.SetActive(false);
         diarioGeneral.SetActive(false);
         botonX2.SetActive(false);
+        botonX3.SetActive(false);
     }
     public void ButtonX()
     {
         fondoItems.SetActive(false);
         slotsGh.SetActive(false);
         slotsItems.SetActive(false);
+        itemInfo.SetActive(false);
         objectives.SetActive(false);
         diarioGeneral.SetActive(false);
         botonX.SetActive(false);
         botonX2.SetActive(false);
+        botonX3.SetActive(false);
         flecha.SetActive(false);
-        categoryItems2.SetActive(false);
+        categoryGhostly2.SetActive(false);
         categoryNpcs2.SetActive(false);
         A = 0;
         BattleSystem.c = 0;
@@ -119,8 +130,6 @@ public class BackpackManager : MonoBehaviour
         A = 0;
         botonesGhostly.SetActive(false);
     }
-
-
     ///DIARIO SECCION///
     public void ButtonDiario()
     {
@@ -130,13 +139,12 @@ public class BackpackManager : MonoBehaviour
         objectives.SetActive(false);
 
         diarioGeneral.SetActive(true);
-        diarioGhostlys.SetActive(true);
-        diarioItems.SetActive(true);
-        diarioNpcs.SetActive(true);
-        botonX2.SetActive(true);
+        tapa.SetActive(true);
+        botonX3.SetActive(true);
 
+        botonX2.SetActive(false);
         categoryItems.SetActive(false);
-        categoryItems2.SetActive(false);
+        categoryGhostly2.SetActive(false);
         categoryNpcs.SetActive(false);
         categoryGhostlys.SetActive(false);
         botonX.SetActive(false);
@@ -157,41 +165,44 @@ public class BackpackManager : MonoBehaviour
         botonesGhostly.SetActive(false);
 
         objectives.SetActive(true);
-        botonX2.SetActive(true);
+        botonX3.SetActive(true);
+
+        botonX2.SetActive(false);
         botonX.SetActive(false);
     }
     public void ButtonDiarioGhostly()
     {
-        diarioGhostlys.SetActive(false);
-        diarioItems.SetActive(false);
-        diarioNpcs.SetActive(false);
+        tapa.SetActive(false);
         categoryNpcs.SetActive(false);
         categoryItems.SetActive(false);
-        categoryItems2.SetActive(false);
+        categoryGhostly2.SetActive(false);
 
         categoryGhostlys.SetActive(true);
         botonX2.SetActive(true);
+        flecha.SetActive(true);
+
+        flechaBack.SetActive(false);
+        botonX3.SetActive(false);
+        botonX.SetActive(false);
     }
     public void ButtonDiarioItems()
     {
-        diarioGhostlys.SetActive(false);
-        diarioItems.SetActive(false);
-        diarioNpcs.SetActive(false);
+        tapa.SetActive(false);
         categoryNpcs.SetActive(false);
         categoryGhostlys.SetActive(false);
 
         botonX2.SetActive(true);
         categoryItems.SetActive(true);
-        flecha.SetActive(true);
-
-        categoryItems2.SetActive(false);
+        
+        flecha.SetActive(false);
+        categoryGhostly2.SetActive(false);
         flechaBack.SetActive(false);
+        botonX3.SetActive(false);
+        botonX.SetActive(false); 
     }
-    public void ButtonDiarioItems2()
+    public void ButtonDiarioGhostly2()
     {
-        diarioGhostlys.SetActive(false);
-        diarioItems.SetActive(false);
-        diarioNpcs.SetActive(false);
+        tapa.SetActive(false);
         categoryNpcs.SetActive(false);
         categoryGhostlys.SetActive(false);
 
@@ -199,14 +210,14 @@ public class BackpackManager : MonoBehaviour
         categoryItems.SetActive(false);
         flecha.SetActive(false);
 
-        categoryItems2.SetActive(true);
+        categoryGhostly2.SetActive(true);
         flechaBack.SetActive(true);
+        botonX3.SetActive(false);
+        botonX.SetActive(false);
     }
     public void ButtonDiarioNpcs()
     {
-        diarioGhostlys.SetActive(false);
-        diarioItems.SetActive(false);
-        diarioNpcs.SetActive(false);
+        tapa.SetActive(false);
         categoryGhostlys.SetActive(false);
         categoryItems.SetActive(false);
         flechaBackNpc.SetActive(false);
@@ -215,12 +226,12 @@ public class BackpackManager : MonoBehaviour
         botonX2.SetActive(true);
         categoryNpcs.SetActive(true);
         flechaNpc.SetActive(true);
+        botonX3.SetActive(false);
+        botonX.SetActive(false);
     }
     public void ButtonDiarioNpcs2()
     {
-        diarioGhostlys.SetActive(false);
-        diarioItems.SetActive(false);
-        diarioNpcs.SetActive(false);
+        tapa.SetActive(false);
         categoryGhostlys.SetActive(false);
         categoryItems.SetActive(false);
         categoryNpcs.SetActive(false);
@@ -229,5 +240,7 @@ public class BackpackManager : MonoBehaviour
         botonX2.SetActive(true);
         flechaBackNpc.SetActive(true);
         categoryNpcs2.SetActive(true);
+        botonX3.SetActive(false);
+        botonX.SetActive(false);
     }
 }

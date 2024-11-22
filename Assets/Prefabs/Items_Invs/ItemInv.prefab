@@ -31,12 +31,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8040133240024876358}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.72439957, y: -0.42398834}
-  m_SizeDelta: {x: -1.4488, y: -0.84795}
+  m_AnchoredPosition: {x: -32.6, y: 29}
+  m_SizeDelta: {x: -62.3422, y: -25.7178}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8599665970483071591
 CanvasRenderer:
@@ -59,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -67,11 +66,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 60
+    m_Font: {fileID: 12800000, guid: 6ee455897a1df114db6047a1bd5f6c10, type: 3}
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 1
+    m_MinSize: 0
     m_MaxSize: 60
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -93,6 +92,7 @@ GameObject:
   - component: {fileID: 4217134494025933593}
   - component: {fileID: 6459346722401051471}
   - component: {fileID: 9036830104464563974}
+  - component: {fileID: -4334472580605545891}
   m_Layer: 0
   m_Name: ItemInv
   m_TagString: Slot
@@ -114,12 +114,11 @@ RectTransform:
   m_Children:
   - {fileID: 679018045351012308}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.52500004}
-  m_AnchoredPosition: {x: 33.4459, y: -21.4193}
-  m_SizeDelta: {x: 88.6053, y: 66.9753}
+  m_AnchoredPosition: {x: 0.000038147, y: -39.040993}
+  m_SizeDelta: {x: 78.7857, y: 66.0461}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5715376449516169708
 CanvasRenderer:
@@ -227,7 +226,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd104140602f2b74ea53542d5f42c674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 4
+  amount: 2
   type: 1
   itemID: 1
   cantidad: 1
+  prefabInfo: {fileID: 4169061499343646593, guid: d7556bc6cca6f5a448d8b77125df0d50, type: 3}
+  textInfo: {fileID: 0}
+  itemDescription: Pocion de velocidad.
+--- !u!114 &-4334472580605545891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5978926464822813205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bfbe283a7acb8e4fb885bd2c501efed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemAttributes: {fileID: 9036830104464563974}

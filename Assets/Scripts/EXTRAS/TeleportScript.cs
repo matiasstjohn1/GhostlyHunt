@@ -5,11 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class TeleportScript : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    //Variables de TP
+    public Transform teleportTarget;  //Referencia al objeto de destino
+    public Transform Player; //Quien se hace TP (posicion del jugador)
+    public Transform Camara; //Quien se hace TP (posicion de la camara)
+    public Transform Compa; //Quien se hace TP (posicion del partner)
+
+    //Permite realizar el TP segun colision del jugador
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.gameObject.layer == 3)
+        if (collider.gameObject.layer == 3)
         {
-            SceneManager.LoadScene(6);
+            // Teletransportar al jugador al destino
+            Player.position = teleportTarget.position;
+            Camara.position = teleportTarget.position;
+            Compa.position = teleportTarget.position;
         }
     }
 }

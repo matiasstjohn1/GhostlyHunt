@@ -28,6 +28,7 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject); //Impido q se destruya en escena.
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.volume = defaultVolume;
+        audioSource.loop=true;
         PlaySound(0);
     }
 

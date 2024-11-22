@@ -10,6 +10,8 @@ public class StartCombat : MonoBehaviour
     BattleSystem battle;
     [SerializeField] GameObject imageBattale;
 
+    [SerializeField] GameObject bossPrefab;
+
     void Start()
     {
         battle = GameObject.FindGameObjectWithTag("Battle").GetComponent<BattleSystem>();
@@ -25,7 +27,7 @@ public class StartCombat : MonoBehaviour
              BackpackManager.Instance.slotsItems.SetActive(false);
              BackpackManager.Instance.slotsGh.SetActive(false);
              imageBattale.SetActive(true);
-             battle.SetUpB();
+             battle.SetUpB(bossPrefab);
              a = 1;
            }
 
