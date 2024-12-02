@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.UI.CanvasScaler;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
@@ -14,8 +15,9 @@ public class BattleSystem : MonoBehaviour
 	public GameObject playerPrefab;
 	public GameObject enemyPrefab;
 	public GameObject enemyBossPrefab;
+    public CustomEventExample _cust;
 
-	[Header("Posiciones de batalla")]
+    [Header("Posiciones de batalla")]
 	public Transform playerBattleStation;
 	public Transform enemyBattleStation;
 
@@ -108,7 +110,8 @@ public class BattleSystem : MonoBehaviour
 
     private void Update()
 	{
-		if (enemyUnit != null)
+        _cust.GhostlyTime += Time.deltaTime; 
+        if (enemyUnit != null)
 		{
 			enemyUnit.ChangeSprite(enemyUnit.nameIndex);
 		}
@@ -302,7 +305,7 @@ public class BattleSystem : MonoBehaviour
 
 		if (enemyUnit != null)
 		{
-		    isDead = enemyUnit.TakeDamage(StatsManager.Instance._damage + (StatsManager.Instance._damage * 10 / 100) + corruptDamage);
+		    isDead = enemyUnit.TakeDamage(StatsManager.Instance._damage + (StatsManager.Instance._damage * 60 / 100) + corruptDamage);
 			enemyHUD.SetHP(enemyUnit.currentHP); //Vida enemy.
 			attackImage.SetActive(true); //Futuro cambiar imagen de ataque a especial
 			AudioManager.instance.PlayCombatSounds(1); //Futuro cambiar sonido de ataque especial.
@@ -312,7 +315,7 @@ public class BattleSystem : MonoBehaviour
 
 		if (bossBattle == true)
 		{
-			isDead = enemyBossUnit.TakeDamage(StatsManager.Instance._damage + (StatsManager.Instance._damage * 10 / 100) + corruptDamage);
+			isDead = enemyBossUnit.TakeDamage(StatsManager.Instance._damage + (StatsManager.Instance._damage * 60 / 100) + corruptDamage);
 			enemyHUD.SetHP(enemyBossUnit.currentHP); //Vida enemy.
 			attackImage.SetActive(true); //Futuro cambiar imagen de ataque a especial
 			AudioManager.instance.PlayCombatSounds(1); //Futuro cambiar sonido de ataque especial.
@@ -331,6 +334,11 @@ public class BattleSystem : MonoBehaviour
 				Destroy(Boss[0]);
 				GameManager.Instance.bossCount += 1;
 				GameManager.Instance.ActualizarObjetivo5();
+				if (GameManager.Instance.bossCount > 1)
+                {
+                    _cust.ObjectiveIDa = 1005;
+                    _cust.OnLevelComplete();
+                }
 			}
 			yield return new WaitForSeconds(2f);
 			imageBattale.SetActive(false);
@@ -377,7 +385,7 @@ public class BattleSystem : MonoBehaviour
 		if (enemyUnit != null && (StatsManager.Instance._index == 10 || StatsManager.Instance._index == 11 || StatsManager.Instance._index == 14 || StatsManager.Instance._index == 15 || StatsManager.Instance._index == 17 || StatsManager.Instance._index == 18 || StatsManager.Instance._index == 19))
 		{
 			isDead = enemyUnit.TakeDamage(10000);
-			isDead = playerUnit.TakeDamage((int)playerUnit.currentHP + 10);
+			playerUnit.TakeDamage((int)playerUnit.currentHP - 1);
 			//destroyImage.SetActive(true); IMAGEN HABILIDAD AUTOEXPLOCION
 			//AudioManager.instance.PlayCombatSounds(1); AUDIO EXPLOCION
 			dialogueText.text = "Autoexploción Activado!";
@@ -410,7 +418,7 @@ public class BattleSystem : MonoBehaviour
 		if (bossBattle == true && (StatsManager.Instance._index == 10 || StatsManager.Instance._index == 11 || StatsManager.Instance._index == 12 || StatsManager.Instance._index == 13 || StatsManager.Instance._index == 14))
 		{
 			isDead = enemyBossUnit.TakeDamage(200);
-			isDead = playerUnit.TakeDamage(100);
+			playerUnit.TakeDamage(100);
 			enemyHUD.SetHP(enemyBossUnit.currentHP); //Vida enemy.
 			//destroyImage.SetActive(true); IMAGEN HABILIDAD AUTOEXPLOCION
 			//AudioManager.instance.PlayCombatSounds(1); AUDIO EXPLOCION
@@ -583,7 +591,9 @@ public class BattleSystem : MonoBehaviour
 	{
 		if (state == BattleState.WON)
 		{
-			AudioManager.instance.PlayCombatSounds(6);
+            _cust.ObjectiveIDa = 1002;
+            _cust.OnLevelComplete();
+            AudioManager.instance.PlayCombatSounds(6);
 			dialogueText.text = "¡Ganaste la batalla!";
 			yield return new WaitForSeconds(1f);
 
@@ -716,7 +726,7 @@ public class BattleSystem : MonoBehaviour
         usePotion.SetActive(false);
     }
 
-        public IEnumerator PlayerEscape()
+    public IEnumerator PlayerEscape()
 	{
 		foreach (GameObject _spawner in _spawner)
 		{
@@ -778,9 +788,11 @@ public class BattleSystem : MonoBehaviour
 
 		if (chance == 0 && bossBattle == false)
 		{
+            _cust.ObjectiveIDa = 1003;
+            _cust.GhostlyIDa = enemyUnit.nameIndex;
+            _cust.OnLevelComplete();
 
-			
-			dialogueText.text = "¡Captura en 3...2...1!";
+            dialogueText.text = "¡Captura en 3...2...1!";
 			yield return new WaitForSeconds(2f);
 			AudioManager.instance.PlayCombatSounds(6);
 			dialogueText.text = "¡Captura exitosa!";
@@ -1027,8 +1039,14 @@ public class BattleSystem : MonoBehaviour
 	public void ButtonYes()
 	{
 		b = 0;
-		c = 0;
-		if ((GameManager.Instance.pj) == 0)
+        c = 0;
+        
+		_cust.GhostlyTypec = playerUnit.unitName[StatsManager.Instance._index];
+		_cust.OnGhostlyEquipedOnCombat();
+		_cust.GhostlyTime = 0;
+
+
+        if ((GameManager.Instance.pj) == 0)
 		{
 			playerUnit.currentHP = StatsSave.Instance.currentHealth1;
 		}

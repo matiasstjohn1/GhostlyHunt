@@ -48,22 +48,28 @@ public class GameManager : MonoBehaviour
         if(obv1)
         {
             obvText1.text = "Obtener un Item=1";
+
+
         }
         if (obv2)
         {
             obvText2.text = "Ganar un combate=1";
+
         }
         if (obv3)
         {
             obvText3.text = "Capturar un Ghostly=1";
+
         }
         if (obv4)
         {
             obvText4.text = "Hablar con un Npc=1";
+
         }
         if (obv5)
         {
             obvText5.text = "Mata a los jefes="+ bossCount + "/2";
+
         }
         if (obv1&&obv2&&obv3&&obv4&&obv5)
         {

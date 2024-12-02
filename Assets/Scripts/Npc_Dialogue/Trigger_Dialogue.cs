@@ -22,10 +22,14 @@ public class Trigger_Dialogue : MonoBehaviour
     //Unlock.
     [SerializeField] private int unlockIndex;
 
+    //CustomEvent
+    public CustomEventExample _cust;
+
     void Start()
     {
         z_Collider = GetComponent<Collider2D>();
         movement = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement_Main>();
+
     }
 
     public void TriggerDialogue()
@@ -41,6 +45,9 @@ public class Trigger_Dialogue : MonoBehaviour
             
             if (Input.GetKeyDown(KeyCode.F)&&seActivo==false)
             {
+                _cust.ObjectiveIDa = 1004;
+                _cust.NpcIDa=unlockIndex;
+                //evento analitycs unlock index
                 p++;
                 UnlocksManager.instance.UnlockByIndex(unlockIndex);
                 TriggerDialogue();
@@ -63,6 +70,7 @@ public class Trigger_Dialogue : MonoBehaviour
 
         if (FindObjectOfType<DialogueManager>().finishDialogue&&seActivo)
         {
+            _cust.OnLevelComplete();
             seActivo = false;
             p = 0;
             movement.velocidadMovimiento = movement.velmovsave;

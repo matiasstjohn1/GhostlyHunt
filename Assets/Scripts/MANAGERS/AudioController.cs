@@ -10,5 +10,6 @@ public class AudioController : MonoBehaviour
     {
         AudioManager.instance.StopSounds();
         AudioManager.instance.PlaySound(soundActive);
+
     }
 }

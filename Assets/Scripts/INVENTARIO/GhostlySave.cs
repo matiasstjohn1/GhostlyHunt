@@ -5,7 +5,7 @@ using UnityEngine;
 public class GhostlySave : MonoBehaviour
 {
     public static GhostlySave Instance;
-
+    public CustomEventExample _cust;
     public int slotId;
     private BattleSystem battleSystem;
     private InventoryGh inventoryGh;
@@ -31,7 +31,7 @@ public class GhostlySave : MonoBehaviour
 
     void Update()
     {
-        
+        _cust.GhostlyEquip += Time.deltaTime;
     }
 
     public void Ghostly1()
@@ -40,6 +40,8 @@ public class GhostlySave : MonoBehaviour
 
         if (battleSystem != null && battleSystem.Statsinfo != null && battleSystem.Statsinfo.Count > 0)
         {
+            _cust.GhostlyTypeInv = StatsSave.Instance._nameIndex1;
+            _cust.OnGhostlyEquiped();
             var statInfo = battleSystem.Statsinfo[slotId];
             Debug.Log("damage" + statInfo._damage);
             Debug.Log("HP" + statInfo._HPmax);
@@ -64,6 +66,8 @@ public class GhostlySave : MonoBehaviour
 
         if (battleSystem != null && battleSystem.Statsinfo != null && battleSystem.Statsinfo.Count > 0)
         {
+            _cust.GhostlyTypeInv = StatsSave.Instance._nameIndex2;
+            _cust.OnGhostlyEquiped();
             var statInfo = battleSystem.Statsinfo[slotId];
             Debug.Log("damage" + statInfo._damage);
             Debug.Log("HP" + statInfo._HPmax);
@@ -88,6 +92,8 @@ public class GhostlySave : MonoBehaviour
 
         if (battleSystem != null && battleSystem.Statsinfo != null && battleSystem.Statsinfo.Count > 0)
         {
+            _cust.GhostlyTypeInv = StatsSave.Instance._nameIndex3;
+            _cust.OnGhostlyEquiped();
             var statInfo = battleSystem.Statsinfo[slotId];
             Debug.Log("damage" + statInfo._damage);
             Debug.Log("HP" + statInfo._HPmax);
