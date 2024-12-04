@@ -334,7 +334,7 @@ public class BattleSystem : MonoBehaviour
 				Destroy(Boss[0]);
 				GameManager.Instance.bossCount += 1;
 				GameManager.Instance.ActualizarObjetivo5();
-				if (GameManager.Instance.bossCount > 1)
+				if (GameManager.Instance.bossCount >= 1)
                 {
                     _cust.ObjectiveIDa = 1005;
                     _cust.OnLevelComplete();
