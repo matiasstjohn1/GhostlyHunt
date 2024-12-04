@@ -302,7 +302,7 @@ public class BattleSystem : MonoBehaviour
 
 		if (enemyUnit != null)
 		{
-		    isDead = enemyUnit.TakeDamage(StatsManager.Instance._damage + (StatsManager.Instance._damage * 10 / 100) + corruptDamage);
+		    isDead = enemyUnit.TakeDamage(StatsManager.Instance._damage + (StatsManager.Instance._damage * 60 / 100) + corruptDamage);
 			enemyHUD.SetHP(enemyUnit.currentHP); //Vida enemy.
 			attackImage.SetActive(true); //Futuro cambiar imagen de ataque a especial
 			AudioManager.instance.PlayCombatSounds(1); //Futuro cambiar sonido de ataque especial.
@@ -312,7 +312,7 @@ public class BattleSystem : MonoBehaviour
 
 		if (bossBattle == true)
 		{
-			isDead = enemyBossUnit.TakeDamage(StatsManager.Instance._damage + (StatsManager.Instance._damage * 10 / 100) + corruptDamage);
+			isDead = enemyBossUnit.TakeDamage(StatsManager.Instance._damage + (StatsManager.Instance._damage * 60 / 100) + corruptDamage);
 			enemyHUD.SetHP(enemyBossUnit.currentHP); //Vida enemy.
 			attackImage.SetActive(true); //Futuro cambiar imagen de ataque a especial
 			AudioManager.instance.PlayCombatSounds(1); //Futuro cambiar sonido de ataque especial.
@@ -377,7 +377,7 @@ public class BattleSystem : MonoBehaviour
 		if (enemyUnit != null && (StatsManager.Instance._index == 10 || StatsManager.Instance._index == 11 || StatsManager.Instance._index == 14 || StatsManager.Instance._index == 15 || StatsManager.Instance._index == 17 || StatsManager.Instance._index == 18 || StatsManager.Instance._index == 19))
 		{
 			isDead = enemyUnit.TakeDamage(10000);
-			isDead = playerUnit.TakeDamage((int)playerUnit.currentHP + 10);
+			playerUnit.TakeDamage((int)playerUnit.currentHP - 1);
 			//destroyImage.SetActive(true); IMAGEN HABILIDAD AUTOEXPLOCION
 			//AudioManager.instance.PlayCombatSounds(1); AUDIO EXPLOCION
 			dialogueText.text = "Autoexploción Activado!";
@@ -410,7 +410,7 @@ public class BattleSystem : MonoBehaviour
 		if (bossBattle == true && (StatsManager.Instance._index == 10 || StatsManager.Instance._index == 11 || StatsManager.Instance._index == 12 || StatsManager.Instance._index == 13 || StatsManager.Instance._index == 14))
 		{
 			isDead = enemyBossUnit.TakeDamage(200);
-			isDead = playerUnit.TakeDamage(100);
+			playerUnit.TakeDamage(100);
 			enemyHUD.SetHP(enemyBossUnit.currentHP); //Vida enemy.
 			//destroyImage.SetActive(true); IMAGEN HABILIDAD AUTOEXPLOCION
 			//AudioManager.instance.PlayCombatSounds(1); AUDIO EXPLOCION
@@ -786,6 +786,7 @@ public class BattleSystem : MonoBehaviour
 			dialogueText.text = "¡Captura exitosa!";
 			GameManager.Instance.obv3 = true;
 			GhController.Instance.colocarInv();
+
 			if (i <= Statsinfo.Count)
 			{
 				Statsinfo[i]._damage = enemyUnit.randomDamage;
@@ -957,6 +958,7 @@ public class BattleSystem : MonoBehaviour
 	{
 		if (a == 0)
 		{
+			c = 1;
 			if (state != BattleState.PLAYERTURN)
 				return;
 			BackpackManager.Instance.fondoItems.SetActive(false);
@@ -972,6 +974,7 @@ public class BattleSystem : MonoBehaviour
 	{
 		if (c == 0)
 		{
+			a = 1;
 			onBackChar.SetActive(true);
 			if (state != BattleState.PLAYERTURN)
 				return;

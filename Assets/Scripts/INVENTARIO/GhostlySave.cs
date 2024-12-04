@@ -9,7 +9,7 @@ public class GhostlySave : MonoBehaviour
     public int slotId;
     private BattleSystem battleSystem;
     private InventoryGh inventoryGh;
-
+    public GameObject button;
     private void Awake()
     {
         if (Instance == null)
@@ -51,6 +51,7 @@ public class GhostlySave : MonoBehaviour
             StatsSave.Instance._lvl1 = statInfo._lvl;
             StatsSave.Instance.currentHealth1 = statInfo._HPmax;
             battleSystem.i -= 1;
+            button.SetActive(false);
         }
 
         if (inventoryGh != null)
@@ -75,6 +76,7 @@ public class GhostlySave : MonoBehaviour
             StatsSave.Instance._lvl2 = statInfo._lvl;
             StatsSave.Instance.currentHealth2 = statInfo._HPmax;
             battleSystem.i -= 1;
+            button.SetActive(false);
         }
 
         if (inventoryGh != null)
@@ -99,6 +101,7 @@ public class GhostlySave : MonoBehaviour
             StatsSave.Instance._lvl3 = statInfo._lvl;
             StatsSave.Instance.currentHealth3 = statInfo._HPmax;
             battleSystem.i -= 1;
+            button.SetActive(false);
         }
 
         if (inventoryGh != null)
