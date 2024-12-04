@@ -956,6 +956,7 @@ public class BattleSystem : MonoBehaviour
 	{
 		if (c == 0)
 		{
+			a = 1;
 			if (state != BattleState.PLAYERTURN)
 				return;
 
@@ -969,6 +970,7 @@ public class BattleSystem : MonoBehaviour
 	{
 		if (a == 0)
 		{
+			c = 1;
 			if (state != BattleState.PLAYERTURN)
 				return;
 			BackpackManager.Instance.fondoItems.SetActive(false);
@@ -984,6 +986,7 @@ public class BattleSystem : MonoBehaviour
 	{
 		if (c == 0)
 		{
+			a = 1;
 			onBackChar.SetActive(true);
 			if (state != BattleState.PLAYERTURN)
 				return;
